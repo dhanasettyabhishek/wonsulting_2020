@@ -20,6 +20,8 @@ apiKey = 'Ayda9RJBQ5BoT6opOauSufMf6fTOhVjqpuZyF6t8'
 
 # foodID = '546613'
 
+# API request
+
 
 def nutrient_API(apiKey, foodID):
     api_resp = json.loads(requests.get('https://api.nal.usda.gov/fdc/v1/' +
@@ -34,32 +36,35 @@ def nutrient_API(apiKey, foodID):
     nutrientDict = {k.replace(' ', ''): v for k, v in nutrientDict.items()}
     return nutrientDict
 
+# Plot
+
 
 @app.route('/')
 def home():
-    return render_template('hello.html')
+    return render_template('hello2.html')
 
 
 @app.route('/results', methods=['POST'])
 def result():
+    # API
     food_id = request.form.get('projectFilepath')
     data = []
     X = nutrient_API(apiKey, food_id)
     data.append(X)
 
-    # Plot
-    df = pd.DataFrame(X)
-    labels = [
-        'Protein', 'Totallipid(fat)', 'Carbohydrate,bydifference', 'Sugars,totalincludingNLEA']
-    labels2 = ['Protein', 'Fat', 'Carbohydrate', 'Sugars']
-    values = []
-    for i in labels:
-        values.append(df[i][1])
-    trace = go.Bar(y=labels2, x=values, orientation='h')
+    # PLOT
+    count = 500
+
+    xScale = np.linspace(0, 100, count)
+    yScale = np.random.randn(count)
+    trace = go.Scatter(
+        x=xScale,
+        y=yScale
+    )
     fig = [trace]
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('hello.html', data=data, v=graphJSON)
+    return render_template('hello2.html', data=data, v=graphJSON)
 
 
 if __name__ == "__main__":
