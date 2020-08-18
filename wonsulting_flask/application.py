@@ -51,7 +51,7 @@ def result():
     df = pd.DataFrame(X)
     labels = [
         'Protein', 'Totallipid(fat)', 'Carbohydrate,bydifference', 'Sugars,totalincludingNLEA']
-    labels2 = ['Protein', 'Fat', 'Carbohydrate', 'Sugars']
+    labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
     values = []
     for i in labels:
         values.append(df[i][1])

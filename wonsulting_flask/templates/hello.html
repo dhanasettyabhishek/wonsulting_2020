@@ -23,8 +23,35 @@
     />
   </head>
   <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Abraca Data</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-item nav-link active" href="#"
+              >Why Nutrition? <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="#ourteam">Our Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="#">Credits</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <nav class="navbar fixed-top navbar-dark bg-dark mx-auto">
       <a class="navbar-brand" href="#">Abraca Data</a>
       <button
@@ -41,20 +68,15 @@
             >Why Nutrition? <span class="sr-only">(current)</span></a
           >
           <a class="nav-item nav-link" href="#">About Project</a>
-          <a class="nav-item nav-link" href="#">FAQs</a>
           <a class="nav-item nav-link" href="#ourteam">Our Team</a>
           <a class="nav-item nav-link" href="#">Credits</a>
         </div>
       </div>
     </nav>
-    <div>
-      <img
-        src="{{url_for('static', filename='3.jpg')}}"
-        class="img-fluid"
-        align="middle"
-      />
-    </div>
     <br /><br />
+    <br /><br />
+    <br /><br />
+
     <div class="row justify-content-center align-items-center">
       <form class="form-inline" action="{{ url_for('result') }}" method="post">
         <input
@@ -109,6 +131,7 @@
             </table>
           </div>
         </div>
+        &nbsp;&nbsp;&nbsp;
         <div class="col-md">
           <div class="chart" id="bargraph"></div>
         </div>
