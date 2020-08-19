@@ -69,7 +69,7 @@ def summing_values(mul):
             final_result[i] = (sum_, units, str(sum_) + " " + units)
     food_items = ""
     for i in foodItems:
-        food_items += ", " + i
+        food_items += ", " + i.title()
     food_items = food_items.strip()
     final_result['foodItems'] = (food_items[2:], foodItems)
     return final_result
