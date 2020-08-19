@@ -45,6 +45,43 @@ def add_multiple(id_):
     return values
 
 
+def summing_values(mul):
+    foodItems = []
+    final_result = dict()
+    for i, j in mul.items():
+        if i == "FoodID":
+            for k in j:
+                x = k[0]
+                split_ = x.split(",")
+                foodItems.append(split_[0])
+        else:
+            summed_value = list()
+            units = j[0][1]
+            sum_ = 0
+            for k in j:
+                if k[1] == units:
+                    sum_ += k[0]
+                else:
+                    sum_ += convert(units, k[1], k[0])
+                summed_value.append(k)
+            sum_ = round(sum_, 2)
+            i = ''.join(e for e in i if e.isalnum())
+            final_result[i] = (sum_, units, str(sum_) + " " + units)
+    food_items = ""
+    for i in foodItems:
+        food_items += ", " + i
+    food_items = food_items.strip()
+    final_result['foodItems'] = (food_items[2:], foodItems)
+    return final_result
+
+
+def convert(to_unit, from_unit, value):
+    result = 0
+    if to_unit == 'kcal' and from_unit == 'kJ':
+        result = value * 0.239
+    return result
+
+
 @app.route('/')
 def home():
     return render_template('hello.html')
@@ -61,6 +98,7 @@ def result():
     set_food_id.add(food_id)
     data = []
     X = nutrient_API(apiKey, food_id)
+    X = summing_values(X)
     data.append(X)
     if request.method == 'POST':
         if request.form.get('search') == 'Search':
@@ -74,6 +112,7 @@ def result():
             set_food_id.add(id_)
             print(set_food_id)
             X = add_multiple(list(set_food_id))
+            X = summing_values(X)
             data.append(X)
 
     print(data)
