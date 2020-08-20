@@ -125,8 +125,8 @@ def result():
     food_ids.append(food_id)
     set_food_id.add(food_id)
     data = []
-    X = nutrient_API(apiKey, food_id)
-    X = summing_values(X)
+    api_value = nutrient_API(apiKey, food_id)
+    X = summing_values(api_value)
     data.append(X)
     if request.method == 'POST':
         if request.form.get('search') == 'Search':
@@ -139,10 +139,22 @@ def result():
             id_ = request.form.get('projectFilepath')
             set_food_id.add(id_)
             print(set_food_id)
-            X = add_multiple(list(set_food_id))
-            X = summing_values(X)
+            api_value = add_multiple(list(set_food_id))
+            X = summing_values(api_value)
             data.append(X)
+    L = api_value['Energy']
+    cal_ = [0]
+    value = 0
+    for k in L:
+        if k[1] == 'kJ':
+            value += convert('kcal', 'kJ', k[0])
+            cal_.append(value)
+        else:
+            value += k[0]
+            cal_.append(value)
 
+    split_ = ['Start']+X['foodItems'][2]
+    print(cal_, split_)
     # return render_template('hello_add_multiple.html', data=data)
     # # Plot
     df = pd.DataFrame(X)
@@ -158,11 +170,17 @@ def result():
     ), xaxis=dict(
         title='No.of grams',
     ))
-    # trace = go.Bar(y=labels2, x=values, orientation='h')
-    # fig = [trace]
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('hello_add_multiple.html', data=data, v=graphJSON)
+    # Plot 2
+    fig2 = go.Figure(data=go.Scatter(x=split_, y=cal_))
+    fig2.update_layout(title_text='Total calories plot', yaxis=dict(
+        title='Calories',
+    ), xaxis=dict(
+        title='Food Items',
+    ))
+    graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2)
 
 
 if __name__ == "__main__":

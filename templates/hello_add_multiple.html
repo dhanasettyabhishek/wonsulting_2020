@@ -168,6 +168,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md">
+          <br /><br /><br /><br />
           <section class="performance-facts">
             <header class="performance-facts__header">
               <h1 class="performance-facts__title">Nutrition Facts</h1>
@@ -338,17 +339,10 @@
             </p>
           </section>
         </div>
-        &nbsp;&nbsp;&nbsp;
         <div class="col-md">
           <div class="chart" id="bargraph"></div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        &nbsp;&nbsp;&nbsp;
-        <div class="col-md">
-          <div class="chart" id="bargraph"></div>
+          <hr />
+          <div class="chart" id="chart_graph"></div>
         </div>
       </div>
     </div>
@@ -585,6 +579,10 @@
     <script>
       var graphs = {{v | safe}};
       Plotly.plot('bargraph', graphs,{});
+    </script>
+    <script>
+      var graphs = {{v2 | safe}};
+      Plotly.plot('chart_graph', graphs,{});
     </script>
   </body>
 </html>
