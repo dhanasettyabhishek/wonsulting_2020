@@ -110,6 +110,10 @@ def home():
 def whyN():
     return render_template('whyN.html')
 
+@app.route('/credits')
+def credits():
+    return render_template("credits.html")
+
 
 set_food_id = set()
 
