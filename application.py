@@ -48,6 +48,7 @@ def add_multiple(id_):
 def summing_values(mul):
     foodItems = []
     final_result = dict()
+    all_units = {'kcal', 'g', 'IU'}
     for i, j in mul.items():
         if i == "FoodID":
             for k in j:
@@ -56,22 +57,31 @@ def summing_values(mul):
                 foodItems.append(split_[0])
         else:
             summed_value = list()
-            units = j[0][1]
+            units = ""
             sum_ = 0
             for k in j:
-                if k[1] == units:
+                if k[1] in all_units:
+                    units = k[1]
                     sum_ += k[0]
                 else:
-                    sum_ += convert(units, k[1], k[0])
+                    if k[1] == 'kJ':
+                        units = "kcal"
+                        sum_ += convert('kcal', k[1], k[0])
+                    if k[1] == 'mg':
+                        units = "g"
+                        sum_ += convert('g', k[1], k[0])
+                    if k[1] == 'µg':
+                        units = "g"
+                        sum_ += convert('g', k[1], k[0])
                 summed_value.append(k)
             sum_ = round(sum_, 2)
             i = ''.join(e for e in i if e.isalnum())
-            final_result[i] = (sum_, units, str(sum_) + " " + units)
+            final_result[i] = (sum_, units, str(sum_)+" "+units)
     food_items = ""
     for i in foodItems:
         food_items += ", " + i.title()
     food_items = food_items.strip()
-    final_result['foodItems'] = (food_items[2:], foodItems)
+    final_result['foodItems'] = (food_items[2:], len(foodItems), foodItems)
     return final_result
 
 
@@ -79,6 +89,10 @@ def convert(to_unit, from_unit, value):
     result = 0
     if to_unit == 'kcal' and from_unit == 'kJ':
         result = value * 0.239
+    if to_unit == 'g' and from_unit == 'mg':
+        result = value * 0.001
+    if to_unit == 'g' and from_unit == 'µg':
+        result = value * 10**-6
     return result
 
 
@@ -91,9 +105,11 @@ def search_engine():
 def home():
     return render_template('hello.html')
 
+
 @app.route('/whyN')
 def whyN():
     return render_template('whyN.html')
+
 
 set_food_id = set()
 
@@ -123,21 +139,26 @@ def result():
             X = summing_values(X)
             data.append(X)
 
-    print(data)
-    return render_template('hello_add_multiple.html', data=data)
+    # return render_template('hello_add_multiple.html', data=data)
     # # Plot
-    # df = pd.DataFrame(X)
-    # labels = [
-    #     'Protein', 'Totallipid(fat)', 'Carbohydrate,bydifference', 'Sugars,totalincludingNLEA']
-    # labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
-    # values = []
-    # for i in labels:
-    #     values.append(df[i][0])
+    df = pd.DataFrame(X)
+    labels = ['Protein', 'Totallipidfat',
+              'Carbohydratebydifference', 'SugarstotalincludingNLEA']
+    labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
+    values = []
+    for i in labels:
+        values.append(df[i][0])
+    fig = go.Figure(data=[go.Bar(y=labels2, x=values, orientation='h')])
+    fig.update_layout(title_text='Nutrition Plot', yaxis=dict(
+        title='Nutriants',
+    ), xaxis=dict(
+        title='No.of grams',
+    ))
     # trace = go.Bar(y=labels2, x=values, orientation='h')
     # fig = [trace]
-    # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # return render_template('hello_add_multiple.html', data=data, v=graphJSON)
+    return render_template('hello_add_multiple.html', data=data, v=graphJSON)
 
 
 if __name__ == "__main__":
