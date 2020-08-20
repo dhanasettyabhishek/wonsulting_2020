@@ -8,7 +8,120 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <style>
+      body {
+        font-size: small;
+        line-height: 1.4;
+      }
+      p {
+        margin: 0;
+      }
 
+      .performance-facts {
+        border: 1px solid black;
+        margin: 20px;
+        float: left;
+        width: 280px;
+        padding: 0.5rem;
+        table {
+          border-collapse: collapse;
+        }
+      }
+      .performance-facts__title {
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0 0 0.25rem 0;
+      }
+      .performance-facts__header {
+        border-bottom: 10px solid black;
+        padding: 0 0 0.25rem 0;
+        margin: 0 0 0.5rem 0;
+        p {
+          margin: 0;
+        }
+      }
+      .performance-facts__table {
+        width: 100%;
+        thead tr {
+          th,
+          td {
+            border: 0;
+          }
+        }
+        th,
+        td {
+          font-weight: normal;
+          text-align: left;
+          padding: 0.25rem 0;
+          border-top: 1px solid black;
+          white-space: nowrap;
+        }
+        td {
+          &:last-child {
+            text-align: right;
+          }
+        }
+        .blank-cell {
+          width: 1rem;
+          border-top: 0;
+        }
+        .thick-row {
+          th,
+          td {
+            border-top-width: 5px;
+          }
+        }
+      }
+      .small-info {
+        font-size: 0.7rem;
+      }
+
+      .performance-facts__table--small {
+        @extend .performance-facts__table;
+        border-bottom: 1px solid #999;
+        margin: 0 0 0.5rem 0;
+        thead {
+          tr {
+            border-bottom: 1px solid black;
+          }
+        }
+        td {
+          &:last-child {
+            text-align: left;
+          }
+        }
+        th,
+        td {
+          border: 0;
+          padding: 0;
+        }
+      }
+
+      .performance-facts__table--grid {
+        @extend .performance-facts__table;
+        margin: 0 0 0.5rem 0;
+        td {
+          &:last-child {
+            text-align: left;
+            &::before {
+              content: "•";
+              font-weight: bold;
+              margin: 0 0.25rem 0 0;
+            }
+          }
+        }
+      }
+
+      .text-center {
+        text-align: center;
+      }
+      .thick-end {
+        border-bottom: 10px solid black;
+      }
+      .thin-end {
+        border-bottom: 1px solid black;
+      }
+    </style>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -60,7 +173,7 @@
     <br /><br />
 
     <div class="row justify-content-center align-items-center">
-      <form class="form-inline" action="{{ url_for('result') }}" method="post">
+      <form class="form-inline" action="{{ url_for('result') }}" method="POST">
         <input
           class="form-control mr-sm-3"
           type="text"
@@ -72,47 +185,205 @@
           class="btn btn-outline-success my-2 my-sm-0"
           type="submit"
           value="Search"
+          name="search"
+        />
+        &nbsp;&nbsp;
+        <input
+          class="btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+          value="Add to existing meal"
+          name="add_to_meal"
         />
       </form>
     </div>
     <br />
     <div class="container">
+      {% for item in data %}
+      <center>
+        <h3>
+          <b><i>Nutrition Values for: {{item.foodItems[0]}}</i></b>
+        </h3>
+      </center>
+      {% endfor %}
+    </div>
+    <br />
+    <div class="container">
       <div class="row">
         <div class="col-md">
-          <div class="table-responsive-md">
-            <table class="table text-center">
+          <section class="performance-facts">
+            <header class="performance-facts__header">
+              <h1 class="performance-facts__title">Nutrition Facts</h1>
+              <p>Serving Size 1 cup (about 100g)</p>
+            </header>
+            <table class="performance-facts__table">
               {% for item in data %}
-              <thead class="thead-light">
+              <thead>
                 <tr>
-                  <th scope="col" colspan="2" class="text-center">
-                    Nutrition Values for: {{item.FoodID[0]}}
+                  <th colspan="2" class="small-info">
+                    Amount Per Serving &nbsp;&nbsp;&nbsp;
+                  </th>
+                  <th class="small-info">
+                    <b>% Daily Value*</b>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row" class="text-center">Protein</th>
-                  <td class="text-center">
-                    {{item.Protein[1]}} {{item.Protein[2]}}
+                  <th colspan="2">
+                    <b>Calories</b>
+                    {{item.Energy[2]}}
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Total Fat</b>
+                    {{item.Totallipidfat[2]}}
+                  </th>
+                  <td>
+                    <b>22%</b>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row" class="text-center">Calories</th>
-                  <td class="text-center">
-                    {{item.Energy[1]}} {{item.Energy[2]}}
+                  <td class="blank-cell"></td>
+                  <th>
+                    Saturated Fat {{item.Fattyacidstotalsaturated[2]}}
+                  </th>
+                  <td>
+                    <b>22%</b>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row" class="text-center">Cholesterol</th>
-                  <td class="text-center">
-                    {{item.Cholesterol[1]}} {{item.Cholesterol[2]}}
+                  <td class="blank-cell"></td>
+                  <th>
+                    Trans Fat {{item.Fattyacidstotaltrans[2]}}
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Cholesterol</b>
+                    {{item.Cholesterol[2]}}
+                  </th>
+                  <td>
+                    <b>18%</b>
                   </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Sodium</b>
+                    {{item.SodiumNa[2]}}
+                  </th>
+                  <td>
+                    <b>2%</b>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Total Carbohydrate</b>
+                    {{item.Carbohydratebydifference[2]}}
+                  </th>
+                  <td>
+                    <b>6%</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th>
+                    Dietary Fiber {{item.Fibertotaldietary[2]}}
+                  </th>
+                  <td>
+                    <b>4%</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th>
+                    Sugars {{item.SugarstotalincludingNLEA[2]}}
+                  </th>
+                  <td></td>
+                </tr>
+                <tr class="thick-end">
+                  <th colspan="2">
+                    <b>Protein</b>
+                    {{item.Protein[2]}}
+                  </th>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="small-info">
+              * Percent Daily Values are based on a 2,000 calorie diet. Your
+              daily values may be higher or lower depending on your calorie
+              needs:
+            </p>
+
+            <table class="performance-facts__table--small small-info">
+              <thead>
+                <tr>
+                  <td colspan="2"></td>
+                  <th>Calories:</th>
+                  <th>2,000</th>
+                  <th>2,500</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colspan="2">Total Fat</th>
+                  <td>Less than</td>
+                  <td>65g</td>
+                  <td>80g</td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th>Saturated Fat</th>
+                  <td>Less than</td>
+                  <td>20g</td>
+                  <td>25g</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Cholesterol</th>
+                  <td>Less than</td>
+                  <td>300mg</td>
+                  <td>300 mg</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Sodium</th>
+                  <td>Less than</td>
+                  <td>2,400mg</td>
+                  <td>2,400mg</td>
+                </tr>
+                <tr>
+                  <th colspan="3">Total Carbohydrate</th>
+                  <td>300g</td>
+                  <td>375g</td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th colspan="2">Dietary Fiber</th>
+                  <td>25g</td>
+                  <td>30g</td>
                 </tr>
               </tbody>
               {% endfor %}
             </table>
-          </div>
+
+            <p class="small-info">
+              Calories per gram:
+            </p>
+            <p class="small-info text-center">
+              Fat 9 &bull; Carbohydrate 4 &bull; Protein 4
+            </p>
+          </section>
         </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="col-md">
+          <div class="chart" id="bargraph"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
         &nbsp;&nbsp;&nbsp;
         <div class="col-md">
           <div class="chart" id="bargraph"></div>
@@ -217,11 +488,13 @@
     <br /><br />
     <hr />
     <div id="ourteam">
-      <h2 class="text-center" aria-hidden="true">Meet our team</h2>
-      <h5 class="text-center">
-        Learn more about each member of Abraca-data <br />
-        for the Wonsulting Project 2020. <br />
-      </h5>
+      <h3 class="text-center" aria-hidden="true">Meet our team</h3>
+      <p class="text-center">
+        <i
+          >Learn more about each member of Abraca-data from the Wonsulting
+          Project 2020</i
+        >
+      </p>
     </div>
     <div class="row justify-content-center">
       <div class="col offset-sm-1">

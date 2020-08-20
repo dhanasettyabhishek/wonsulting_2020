@@ -25,26 +25,36 @@
   <body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <nav class="navbar fixed-top navbar-dark bg-dark mx-auto">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Abraca Data</a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler d-lg-none"
         type="button"
         data-toggle="collapse"
-        data-target="#collapsingNavbar"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse" id="collapsingNavbar">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#"
-            >Why Nutrition? <span class="sr-only">(current)</span></a
-          >
-          <a class="nav-item nav-link" href="#">About Project</a>
-          <a class="nav-item nav-link" href="#">FAQs</a>
-          <a class="nav-item nav-link" href="#ourteam">Our Team</a>
-          <a class="nav-item nav-link" href="#">Credits</a>
-        </div>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Why Nutrition?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ourteam">Our Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Credits</a>
+          </li>
+        </ul>
       </div>
     </nav>
     <div>
@@ -221,13 +231,12 @@
       </p>
     </div>
     <div class="row justify-content-center">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-3">
+      <div class="col offset-sm-1">
         <div class="team-member">
           <div class="team-img">
             <img
-              src="http://via.placeholder.com/800x450/7678ed/ffffff?text=Image+9"
-              alt="team member"
+              src="../static/Abhi.jpg"
+              alt="team member Abhi"
               class="img-responsive"
               width="300"
               height="300"
@@ -236,7 +245,11 @@
           <div class="team-hover">
             <div class="desk">
               <h4>Hi There !</h4>
-              <p>I love to introduce myself as a hardcore Web Designer.</p>
+              <p>
+                "A data enthusiast, I love to explore and analyse data. I
+                believe that if we exploring data in the right manner everything
+                can be analysed."
+              </p>
             </div>
             <div class="s-link">
               <a href="#"><i class="fa fa-facebook"></i></a>
@@ -250,12 +263,12 @@
           <span>Data Scientist</span>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col">
         <div class="team-member">
           <div class="team-img">
             <img
-              src="http://via.placeholder.com/800x450/7678ed/ffffff?text=Image+9"
-              alt="team member"
+              src="../static/Div.jpeg"
+              alt="team member Div"
               class="img-responsive"
               width="300"
               height="300"
@@ -264,7 +277,9 @@
           <div class="team-hover">
             <div class="desk">
               <h4>Hi There !</h4>
-              <p>I love to introduce myself as a hardcore Web Designer.</p>
+              <p>
+                "Finding patterns and building models around it is my passion."
+              </p>
             </div>
             <div class="s-link">
               <a href="#"><i class="fa fa-facebook"></i></a>
@@ -278,12 +293,12 @@
           <span>Data Scientist</span>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col">
         <div class="team-member">
           <div class="team-img">
             <img
-              src="http://via.placeholder.com/800x450/7678ed/ffffff?text=Image+9"
-              alt="team member"
+              src="../static/Jen.JPG"
+              alt="team member Jen"
               class="img-responsive"
               width="300"
               height="300"
@@ -292,7 +307,11 @@
           <div class="team-hover">
             <div class="desk">
               <h4>Hi There !</h4>
-              <p>I love to introduce myself as a hardcore Web Designer.</p>
+              <p>
+                "Project management is the heart of what I do. I plan,
+                coordinate, and execute the project steps from start to finish
+                with our team."
+              </p>
             </div>
             <div class="s-link">
               <a href="#"><i class="fa fa-facebook"></i></a>
