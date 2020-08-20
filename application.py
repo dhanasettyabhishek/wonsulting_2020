@@ -91,6 +91,9 @@ def search_engine():
 def home():
     return render_template('hello.html')
 
+@app.route('/whyN')
+def whyN():
+    return render_template('whyN.html')
 
 set_food_id = set()
 
