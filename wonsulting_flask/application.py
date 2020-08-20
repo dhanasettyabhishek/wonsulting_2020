@@ -82,6 +82,11 @@ def convert(to_unit, from_unit, value):
     return result
 
 
+@app.route('/search')
+def search_engine():
+    return render_template('search.html')
+
+
 @app.route('/')
 def home():
     return render_template('hello.html')
