@@ -1,86 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Wonsulting 2020!</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/application.css') }}"
+    />
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ url_for('home') }}">Abraca Data</a>
-        <button
-          class="navbar-toggler d-lg-none"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{ url_for('home') }}"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('home') }}#ourteam">Our Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Credits</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <h1><center> Why Nutrition? </center> </h1><br /><br />
-      <!-- <div class="container"> -->
-        <div class="row">
-          <div class="col-3 offset-sm-1"><br /><br />
-            <img
-                    src="../static/whyN.png"
-                    alt=""
-                    height="400"
-                    width="300"
-                  /><br />
-            <p style='font-size: 12px;'>Harvest your seeds of growth with nutrition now, and<br /> your key to living a healthy lifestyle will follow.<br />
-                <i>Image Source: Unsplash</i></p>
-            
-          </div>
-          <div class="col-6">
-            <h3><center>Nutrition is the key to living a healthy lifestyle</center></h3>
-            <p>Did you know? In the United States, the top leading cause of death is heart disease in which more than 647,000 people have died from it (CDC, 2020). The American Heart Association predicts that "by 2035, 45% of the U.S. adult population will live with cardiovascular disease at an annual cost of more than $1 trillion" (AMA, 2018). Inadequate nutrition may result in a costly, unhealthy lifestyle. Fortunately, many heart diseases are preventable with regular physical activity, proper nutrition and food intake. <br /><br />
+      <a class="navbar-brand" href="{{ url_for('home') }}">Abraca Data</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('whyN') }}"
+              >Why Nutrition?<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}#ourteam"
+              >Our Team</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Credits</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <h1><center>Why Nutrition?</center></h1>
+    <br /><br />
+    <!-- <div class="container"> -->
+    <div class="row">
+      <div class="col-3 offset-sm-1">
+        <br /><br />
+        <img src="../static/whyN.png" alt="" height="400" width="300" /><br />
+        <p style="font-size: 12px;">
+          Harvest your seeds of growth with nutrition now, and<br />
+          your key to living a healthy lifestyle will follow.<br />
+          <i>Image Source: Unsplash</i>
+        </p>
+      </div>
+      <div class="col-6">
+        <h3>
+          <center>Nutrition is the key to living a healthy lifestyle</center>
+        </h3>
+        <p>
+          Did you know? In the United States, the top leading cause of death is
+          heart disease in which more than 647,000 people have died from it
+          (CDC, 2020). The American Heart Association predicts that "by 2035,
+          45% of the U.S. adult population will live with cardiovascular disease
+          at an annual cost of more than $1 trillion" (AMA, 2018). Inadequate
+          nutrition may result in a costly, unhealthy lifestyle. Fortunately,
+          many heart diseases are preventable with regular physical activity,
+          proper nutrition and food intake. <br /><br />
 
-                Nutrition is the key to living a healthy lifestyle. When people combine adequate nutrition with regular physical activity, the benefits include:<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;- reduce risk of chronic diseases <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;- maintain stable weight <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;- improve self-esteem, self-image, and well-being<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;- help the human body function normally with energy and coordination<br /><br />
-                
-                However, many people fail to realize and prioritize the value of making healthy, nutritional decisions in their lives. It can be easy to fall back on our previous unhealthy habits driven by emotions, social situations, and other influential environments in our lifestyles. What matters more is how we respond to the problems that we will face with our health now rather than waiting to react later when it becomes too late. Even small changes in our habits can build up and bring significant impact to living a healthier life. Remember, you are in charge of your life. <br /><br />
-                
-                It is important to do what is right for your mind and body. With this in mind, our team presents you an opportunity to learn something new with our simple tool -- a nutritional food intake database. 
-                
-                
-                </p>
-          </div>
-        </div>
-     <!-- </div> -->
-      
-      
+          Nutrition is the key to living a healthy lifestyle. When people
+          combine adequate nutrition with regular physical activity, the
+          benefits include:<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;- reduce risk of chronic diseases <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;- maintain stable weight <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;- improve self-esteem, self-image, and
+          well-being<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;- help the human body function normally with
+          energy and coordination<br /><br />
+
+          However, many people fail to realize and prioritize the value of
+          making healthy, nutritional decisions in their lives. It can be easy
+          to fall back on our previous unhealthy habits driven by emotions,
+          social situations, and other influential environments in our
+          lifestyles. What matters more is how we respond to the problems that
+          we will face with our health now rather than waiting to react later
+          when it becomes too late. Even small changes in our habits can build
+          up and bring significant impact to living a healthier life. Remember,
+          you are in charge of your life. <br /><br />
+
+          It is important to do what is right for your mind and body. With this
+          in mind, our team presents you an opportunity to learn something new
+          with our simple tool -- a nutritional food intake database.
+        </p>
+      </div>
+    </div>
+    <!-- </div> -->
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
