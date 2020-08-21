@@ -1,6 +1,5 @@
-flask
+Flask
 pandas
 requests
 json
-dash==1.14.0
 plotly
