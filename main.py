@@ -144,9 +144,10 @@ def result():
             pass
         elif request.form.get('add_to_meal') == 'Add to existing meal':
             data = []
-            id_ = request.form.get('projectFilepath')
+            id_description = request.form.get('projectFilepath')
+            id_ = str(description_dict[id_description])
             set_food_id.add(id_)
-            print(set_food_id)
+            print("====", set_food_id)
             api_value = add_multiple(list(set_food_id))
             X = summing_values(api_value)
             data.append(X)
@@ -163,7 +164,6 @@ def result():
 
     split_ = ['Start']+X['foodItems'][2]
     print(cal_, split_)
-    # return render_template('hello_add_multiple.html', data=data)
     # # Plot
     df = pd.DataFrame(X)
     labels = ['Protein', 'Totallipidfat',
