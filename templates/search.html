@@ -1,71 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <!-- Bootstrap CSS -->
+    <link href="../assets/styles.min.css" rel="stylesheet" />
+    <title>jQuery UI Autocomplete: Using Label-Value Pairs</title>
     <link
+      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
     />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Abraca Data</a>
-      <button
-        class="navbar-toggler d-lg-none"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Why Nutrition?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ourteam">Our Team</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Credits</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <p>
+      Default Behavior<br />
+      <input
+        id="autocomplete1"
+        type="text"
+        placeholder="U.S. state name"
+        name="code"
+      />
+    </p>
+
+    <p>
+      Modified Behavior<br />
+      <input id="autocomplete2" type="text" placeholder="U.S. state name" />
+      <input id="autocomplete2-value" type="text" name="code" />
+    </p>
+
+    <script>
+      /*
+       * jQuery UI Autocomplete: Using Label-Value Pairs
+       * https://salman-w.blogspot.com/2013/12/jquery-ui-autocomplete-examples.html
+       */
+      var data = [
+        { value: "AL", label: "Alabama" },
+        { value: "AK", label: "Alaska" },
+        { value: "AZ", label: "Arizona" },
+        { value: "AR", label: "Arkansas" },
+        { value: "CA", label: "California" },
+        { value: "CO", label: "Colorado" },
+        { value: "CT", label: "Connecticut" },
+        { value: "DE", label: "Delaware" },
+        { value: "FL", label: "Florida" },
+        { value: "GA", label: "Georgia" },
+        { value: "HI", label: "Hawaii" },
+        { value: "ID", label: "Idaho" },
+        { value: "IL", label: "Illinois" },
+        { value: "IN", label: "Indiana" },
+        { value: "IA", label: "Iowa" },
+        { value: "KS", label: "Kansas" },
+        { value: "KY", label: "Kentucky" },
+        { value: "LA", label: "Louisiana" },
+        { value: "ME", label: "Maine" },
+        { value: "MD", label: "Maryland" },
+        { value: "MA", label: "Massachusetts" },
+        { value: "MI", label: "Michigan" },
+        { value: "MN", label: "Minnesota" },
+        { value: "MS", label: "Mississippi" },
+        { value: "MO", label: "Missouri" },
+        { value: "MT", label: "Montana" },
+        { value: "NE", label: "Nebraska" },
+        { value: "NV", label: "Nevada" },
+        { value: "NH", label: "New Hampshire" },
+        { value: "NJ", label: "New Jersey" },
+        { value: "NM", label: "New Mexico" },
+        { value: "NY", label: "New York" },
+        { value: "NC", label: "North Carolina" },
+        { value: "ND", label: "North Dakota" },
+        { value: "OH", label: "Ohio" },
+        { value: "OK", label: "Oklahoma" },
+        { value: "OR", label: "Oregon" },
+        { value: "PA", label: "Pennsylvania" },
+        { value: "RI", label: "Rhode Island" },
+        { value: "SC", label: "South Carolina" },
+        { value: "SD", label: "South Dakota" },
+        { value: "TN", label: "Tennessee" },
+        { value: "TX", label: "Texas" },
+        { value: "UT", label: "Utah" },
+        { value: "VT", label: "Vermont" },
+        { value: "VA", label: "Virginia" },
+        { value: "WA", label: "Washington" },
+        { value: "WV", label: "West Virginia" },
+        { value: "WI", label: "Wisconsin" },
+        { value: "WY", label: "Wyoming" },
+      ];
+      $(function () {
+        $("#autocomplete1").autocomplete({
+          source: data,
+        });
+        $("#autocomplete2").autocomplete({
+          source: data,
+          focus: function (event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+            // manually update the textbox
+            $(this).val(ui.item.label);
+          },
+          select: function (event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+            // manually update the textbox and hidden field
+            $(this).val(ui.item.label);
+            $("#autocomplete2-value").val(ui.item.value);
+          },
+        });
+      });
+    </script>
   </body>
 </html>
