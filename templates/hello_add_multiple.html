@@ -8,6 +8,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/healthy.ico"
+    />
     <style>
       .performance-facts {
         border: 1px solid black;
@@ -92,6 +97,10 @@
       type="text/css"
       href="{{ url_for('static',filename='styles/application.css') }}"
     />
+    <link
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -127,31 +136,43 @@
       </div>
     </nav>
     <br /><br />
-    <br /><br />
-    <br /><br />
 
-    <div class="row justify-content-center align-items-center">
-      <form class="form-inline" action="{{ url_for('result') }}" method="POST">
+    <div class="justify-content-center align-items-center">
+      <h2 class="text-center">Find Nutrition Value</h2>
+      <h4 class="text-center">
+        Explore a variety of food items featured in our database.<br />
+        Search for a food item to calculate its nutrient value.<br />
+      </h4>
+      <br />
+
+      <form
+        class="row form-inline justify-content-center align-items-center"
+        action="{{ url_for('result') }}"
+        method="POST"
+      >
+        <span class="col blank-cell"></span>
         <input
-          class="form-control mr-sm-3"
+          id="autocomplete2"
+          class="col form-control mr-sm-3"
           type="text"
           placeholder="Search"
           aria-label="Search"
           name="projectFilepath"
         />
         <input
-          class="btn btn-outline-success my-2 my-sm-0"
+          class="col-sm-0 btn btn-outline-success my-2 my-sm-0"
           type="submit"
           value="Search"
           name="search"
         />
         &nbsp;&nbsp;
         <input
-          class="btn btn-outline-success my-2 my-sm-0"
+          class="col-sm-0 btn btn-outline-success my-2 my-sm-0"
           type="submit"
           value="Add to existing meal"
           name="add_to_meal"
         />
+        <span class="col blank-cell"></span>
       </form>
     </div>
     <br />
@@ -164,7 +185,6 @@
       </center>
       {% endfor %}
     </div>
-    <br />
     <div class="container">
       <div class="row">
         <div class="col-md">
@@ -349,14 +369,6 @@
     <br /><br />
     <hr />
     <div>
-      <h2 class="text-center">Find Nutrition Value</h2>
-      <h4 class="text-center">
-        Explore a variety of food items featured in our database.<br />
-        Search for a food item to calculate its nutrient value <br />
-        based on a meal option above.
-      </h4>
-      <br />
-
       <div id="gallery" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -583,6 +595,26 @@
     <script>
       var graphs = {{v2 | safe}};
       Plotly.plot('chart_graph', graphs,{});
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+      var data = {{description|safe}};
+      $(function () {
+        $("#autocomplete2").autocomplete({
+          source: data,
+          focus: function (event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+            $('input[name="projectFilepath"]').val(ui.item.value);
+          },
+          select: function (event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+            $("#autocomplete2-value").val(ui.item.label);
+          },
+        });
+      });
     </script>
   </body>
 </html>

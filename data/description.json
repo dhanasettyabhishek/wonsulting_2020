@@ -1,0 +1,402 @@
+[
+    {
+        "label": "pillsbury golden layer buttermilk biscuits, artificial flavor, refrigerated dough",
+        "value": 167512
+    },
+    {
+        "label": "pillsbury, cinnamon rolls with icing, refrigerated dough",
+        "value": 167513
+    },
+    {
+        "label": "kraft foods, shake n bake original recipe, coating for pork, dry",
+        "value": 167514
+    },
+    {
+        "label": "george weston bakeries, thomas english muffins",
+        "value": 167515
+    },
+    {
+        "label": "waffles, buttermilk, frozen, ready-to-heat",
+        "value": 167516
+    },
+    {
+        "label": "waffle, buttermilk, frozen, ready-to-heat, toasted",
+        "value": 167517
+    },
+    {
+        "label": "waffle, buttermilk, frozen, ready-to-heat, microwaved",
+        "value": 167518
+    },
+    {
+        "label": "waffle, plain, frozen, ready-to-heat, microwave",
+        "value": 167519
+    },
+    {
+        "label": "pie crust, cookie-type, graham cracker, ready crust",
+        "value": 167520
+    },
+    {
+        "label": "pie crust, cookie-type, chocolate, ready crust",
+        "value": 167521
+    },
+    {
+        "label": "pie, dutch apple, commercially prepared",
+        "value": 167522
+    },
+    {
+        "label": "pie crust, deep dish, frozen, unbaked, made with enriched flour",
+        "value": 167523
+    },
+    {
+        "label": "waffles, chocolate chip, frozen, ready-to-heat",
+        "value": 167524
+    },
+    {
+        "label": "tostada shells, corn",
+        "value": 167525
+    },
+    {
+        "label": "bread, salvadoran sweet cheese (quesadilla salvadorena)",
+        "value": 167526
+    },
+    {
+        "label": "bread, pound cake type, pan de torta salvadoran",
+        "value": 167527
+    },
+    {
+        "label": "pastry, pastelitos de guava (guava pastries)",
+        "value": 167528
+    },
+    {
+        "label": "crackers, snack, goya crackers",
+        "value": 167529
+    },
+    {
+        "label": "crackers, cream, gamesa sabrosas",
+        "value": 167530
+    },
+    {
+        "label": "crackers, cream, la moderna rikis cream crackers",
+        "value": 167531
+    },
+    {
+        "label": "bread, white wheat",
+        "value": 167532
+    },
+    {
+        "label": "bagels, wheat",
+        "value": 167533
+    },
+    {
+        "label": "cream puff, eclair, custard or cream filled, iced",
+        "value": 167534
+    },
+    {
+        "label": "tortillas, ready-to-bake or -fry, flour, shelf stable",
+        "value": 167535
+    },
+    {
+        "label": "snacks, beef jerky, chopped and formed",
+        "value": 167536
+    },
+    {
+        "label": "snacks, corn-based, extruded, chips, plain",
+        "value": 167537
+    },
+    {
+        "label": "snacks, corn-based, extruded, chips, barbecue-flavor",
+        "value": 167538
+    },
+    {
+        "label": "snacks, corn-based, extruded, cones, plain",
+        "value": 167539
+    },
+    {
+        "label": "snacks, fruit leather, pieces",
+        "value": 167540
+    },
+    {
+        "label": "snacks, fruit leather, rolls",
+        "value": 167541
+    },
+    {
+        "label": "snacks, granola bars, hard, plain",
+        "value": 167542
+    },
+    {
+        "label": "snacks, granola bars, hard, almond",
+        "value": 167543
+    },
+    {
+        "label": "snacks, granola bars, soft, uncoated, raisin",
+        "value": 167544
+    },
+    {
+        "label": "snacks, granola bars, soft, coated, milk chocolate coating, chocolate chip",
+        "value": 167545
+    },
+    {
+        "label": "candies, honey-combed, with peanut butter",
+        "value": 167546
+    },
+    {
+        "label": "snacks, granola bars, soft, coated, milk chocolate coating, peanut butter",
+        "value": 167547
+    },
+    {
+        "label": "snacks, granola bars, soft, uncoated, peanut butter and chocolate chip",
+        "value": 167548
+    },
+    {
+        "label": "snacks, popcorn, oil-popped, microwave, regular flavor, no trans fat",
+        "value": 167549
+    },
+    {
+        "label": "snacks, popcorn, cakes",
+        "value": 167550
+    },
+    {
+        "label": "snacks, popcorn, caramel-coated, with peanuts",
+        "value": 167551
+    },
+    {
+        "label": "snacks, popcorn, caramel-coated, without peanuts",
+        "value": 167552
+    },
+    {
+        "label": "snacks, potato chips, made from dried potatoes, reduced fat",
+        "value": 167553
+    },
+    {
+        "label": "snacks, potato chips, made from dried potatoes, sour-cream and onion-flavor",
+        "value": 167554
+    },
+    {
+        "label": "snacks, pretzels, hard, plain, salted",
+        "value": 167555
+    },
+    {
+        "label": "snacks, pretzels, hard, confectioner's coating, chocolate-flavor",
+        "value": 167556
+    },
+    {
+        "label": "snacks, rice cakes, brown rice, sesame seed",
+        "value": 167557
+    },
+    {
+        "label": "snacks, tortilla chips, plain, white corn, salted",
+        "value": 167558
+    },
+    {
+        "label": "snacks, tortilla chips, nacho cheese",
+        "value": 167559
+    },
+    {
+        "label": "snacks, tortilla chips, ranch-flavor",
+        "value": 167560
+    },
+    {
+        "label": "snacks, trail mix, regular",
+        "value": 167561
+    },
+    {
+        "label": "candies, almond joy candy bar",
+        "value": 167562
+    },
+    {
+        "label": "candies, twizzlers cherry bites",
+        "value": 167563
+    },
+    {
+        "label": "candies, nestle, bit-o'-honey candy chews",
+        "value": 167564
+    },
+    {
+        "label": "candies, nestle, butterfinger bar",
+        "value": 167565
+    },
+    {
+        "label": "candies, caramels, chocolate-flavor roll",
+        "value": 167566
+    },
+    {
+        "label": "baking chocolate, unsweetened, liquid",
+        "value": 167567
+    },
+    {
+        "label": "baking chocolate, unsweetened, squares",
+        "value": 167568
+    },
+    {
+        "label": "candies, confectioner's coating, yogurt",
+        "value": 167569
+    },
+    {
+        "label": "candies, confectioner's coating, peanut butter",
+        "value": 167570
+    },
+    {
+        "label": "candies, white chocolate",
+        "value": 167571
+    },
+    {
+        "label": "ice creams, vanilla, light",
+        "value": 167572
+    },
+    {
+        "label": "ice creams, vanilla, rich",
+        "value": 167573
+    },
+    {
+        "label": "desserts, flan, caramel custard, prepared-from-recipe",
+        "value": 167574
+    },
+    {
+        "label": "ice creams, vanilla",
+        "value": 167575
+    },
+    {
+        "label": "ice creams, vanilla, light, soft-serve",
+        "value": 167576
+    },
+    {
+        "label": "sherbet, orange",
+        "value": 167577
+    },
+    {
+        "label": "candies, fudge, peanut butter, prepared-from-recipe",
+        "value": 167578
+    },
+    {
+        "label": "candies, fudge, vanilla, prepared-from-recipe",
+        "value": 167579
+    },
+    {
+        "label": "candies, fudge, vanilla with nuts",
+        "value": 167580
+    },
+    {
+        "label": "candies, nestle, goobers chocolate covered peanuts",
+        "value": 167581
+    },
+    {
+        "label": "candies, nestle, baby ruth bar",
+        "value": 167582
+    },
+    {
+        "label": "candies, twizzlers strawberry twists candy",
+        "value": 167583
+    },
+    {
+        "label": "syrups, table blends, pancake, with butter",
+        "value": 167584
+    },
+    {
+        "label": "ice creams, chocolate, light",
+        "value": 167585
+    },
+    {
+        "label": "candies, nestle, chunky bar",
+        "value": 167586
+    },
+    {
+        "label": "candies, milk chocolate",
+        "value": 167587
+    },
+    {
+        "label": "puddings, banana, dry mix, instant, prepared with 2% milk",
+        "value": 167588
+    },
+    {
+        "label": "puddings, banana, dry mix, regular, prepared with 2% milk",
+        "value": 167589
+    },
+    {
+        "label": "andrea's, gluten free soft dinner roll",
+        "value": 167590
+    },
+    {
+        "label": "crunchmaster, multi-grain crisps, snack crackers, gluten-free",
+        "value": 167591
+    },
+    {
+        "label": "glutino, gluten free cookies, chocolate vanilla creme",
+        "value": 167592
+    },
+    {
+        "label": "glutino, gluten free cookies, vanilla creme",
+        "value": 167593
+    },
+    {
+        "label": "pepperidge farm, goldfish, baked snack crackers, original",
+        "value": 167594
+    },
+    {
+        "label": "pepperidge farm, goldfish, baked snack crackers, parmesan",
+        "value": 167595
+    },
+    {
+        "label": "pepperidge farm, goldfish, baked snack crackers, pizza",
+        "value": 167596
+    },
+    {
+        "label": "rudi's, gluten-free bakery, original sandwich bread",
+        "value": 167597
+    },
+    {
+        "label": "udi's, gluten free, soft & delicious white sandwich bread",
+        "value": 167598
+    },
+    {
+        "label": "udi's, gluten free, soft & hearty whole grain bread",
+        "value": 167599
+    },
+    {
+        "label": "udi's, gluten free, whole grain dinner rolls",
+        "value": 167600
+    },
+    {
+        "label": "van's, gluten free, totally original pancakes",
+        "value": 167601
+    },
+    {
+        "label": "seaweed, canadian cultivated emi-tsunomata, dry",
+        "value": 167602
+    },
+    {
+        "label": "seaweed, canadian cultivated emi-tsunomata, rehydrated",
+        "value": 167603
+    },
+    {
+        "label": "potatoes, hash brown, refrigerated, unprepared",
+        "value": 167604
+    },
+    {
+        "label": "potatoes, hash brown, refrigerated, prepared, pan-fried in canola oil",
+        "value": 167605
+    },
+    {
+        "label": "sweet potatoes, french fried, frozen as packaged, salt added in processing",
+        "value": 167606
+    },
+    {
+        "label": "moose, meat, raw (alaska native)",
+        "value": 167607
+    },
+    {
+        "label": "mashu roots, raw (alaska native)",
+        "value": 167608
+    },
+    {
+        "label": "moose, liver, braised (alaska native)",
+        "value": 167609
+    },
+    {
+        "label": "seal, bearded (oogruk), meat, raw (alaska native)",
+        "value": 167610
+    },
+    {
+        "label": "oil, bearded seal (oogruk) (alaska native)",
+        "value": 167611
+    }
+]

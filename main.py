@@ -10,8 +10,6 @@ import pandas as pd
 # libraries for plotly
 import plotly
 import plotly.graph_objs as go
-import numpy as np
-import plotly.figure_factory as ff
 
 app = Flask(__name__)
 
@@ -103,7 +101,9 @@ def search_engine():
 
 @app.route('/')
 def home():
-    return render_template('hello.html')
+    with open('data/description.json') as f:
+        description = json.load(f)
+    return render_template('hello.html', description=description)
 
 
 @app.route('/whyN')
@@ -121,7 +121,14 @@ set_food_id = set()
 
 @app.route('/results', methods=['POST'])
 def result():
-    food_id = request.form.get('projectFilepath')
+    with open('data/description.json') as f:
+        description = json.load(f)
+    description_dict = dict()
+    for i in description:
+        description_dict[i['label']] = i['value']
+    food_id_description = request.form.get('projectFilepath')
+    food_id = str(description_dict[food_id_description])
+    print(food_id)
     food_ids = []
     food_ids.append(food_id)
     set_food_id.add(food_id)
@@ -181,7 +188,7 @@ def result():
         title='Food Items',
     ))
     graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2)
+    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description)
 
 
 if __name__ == "__main__":
