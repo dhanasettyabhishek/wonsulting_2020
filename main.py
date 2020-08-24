@@ -135,7 +135,7 @@ def search_engine():
 
 @app.route('/')
 def home():
-    with open('data/description.json') as f:
+    with open('description.json') as f:
         description = json.load(f)
     return render_template('hello.html', description=description)
 
@@ -165,7 +165,7 @@ set_food_id = set()
 
 @app.route('/results', methods=['POST'])
 def result():
-    with open('data/description.json') as f:
+    with open('description.json') as f:
         description = json.load(f)
     description_dict = dict()
     for i in description:
