@@ -113,7 +113,7 @@ def whyN():
 
 @app.route('/credits')
 def credits():
-    return render_template("credits.html")
+    return render_template("Credits.html")
 
 
 set_food_id = set()

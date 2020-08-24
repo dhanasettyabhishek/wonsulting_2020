@@ -1,4 +1,6 @@
 ---
+entrypoint: "gunicorn -b:$PORT main:app"
+env: flex
 handlers:
   - static_dir: static
     url: /static
