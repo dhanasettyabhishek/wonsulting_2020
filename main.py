@@ -110,6 +110,13 @@ def home():
 def whyN():
     return render_template('whyN.html')
 
+@app.route('/About')
+def About():
+    return render_template('About.html')
+
+@app.route('/Questions')
+def Questions():
+    return render_template('Questions.html')
 
 @app.route('/credits')
 def credits():
