@@ -118,10 +118,9 @@ def About():
 def Questions():
     return render_template('Questions.html')
 
-
 @app.route('/credits')
 def credits():
-    return render_template("credits.html")
+    return render_template("Credits.html")
 
 
 set_food_id = set()
