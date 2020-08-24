@@ -3,6 +3,7 @@ from markupsafe import escape
 from jinja2 import Template
 
 # libraries for API request
+import random
 import requests
 import json
 import pandas as pd
@@ -13,8 +14,12 @@ import plotly.graph_objs as go
 
 app = Flask(__name__)
 
-
-apiKey = 'Ayda9RJBQ5BoT6opOauSufMf6fTOhVjqpuZyF6t8'
+apiKeys = ["WEmcd6DkxgyCerLC1mLNfLxuU0yTL8IzrzpaNbFf", "OVPFv146FkxVhRv2CCBLZ4aaxdJSXNLu8wGnCCbA",
+           'Ayda9RJBQ5BoT6opOauSufMf6fTOhVjqpuZyF6t8', "DqannebfgACLvWlhbjY3SeEkD0iepY6RudjLixsI",
+           "OXr1dRlCSW5AHaVCC3SLtFm7EKy1GVOiMPlQH79Z", "CKW4XukWilX86KOGlmjRkojWHT9UK6o4mXu9mHw2",
+           "extc6yduRq7J49GuMj2Qld1Bm0SVQBhEqo9RrovA", "jyEvK7JgiJuyKHQelqYEyisOMuclq49kExvsbEnJ",
+           "ZfADi6khGtyAwI6goSldliOwcSIDLHLkeVUGmTB8", "LsWUY5z0b031P4SN49XnsfCiTNR4fm5g8E5RIIou"]
+apiKey = random.choice(apiKeys)
 
 # foodID = '546613'
 
@@ -43,6 +48,29 @@ def add_multiple(id_):
     return values
 
 
+def DVpercentage(daily_value, sum_):
+    percentage = {}
+    for i, total in daily_value.items():
+        value = sum_[i][0]
+        if value == 0:
+            percentage[i] = 0
+        else:
+            percent = (value / total) * 100
+            percentage[i] = int(percent)
+    return percentage
+
+
+daily_value = {'SugarstotalincludingNLEA': 50.0,
+               'Cholesterol': 0.3,
+               'Fibertotaldietary': 28.0,
+               'Totallipidfat': 78.0,
+               'Protein': 50.0,
+               'Fattyacidstotalsaturated': 20.0,
+               'SodiumNa': 2.3,
+               'Carbohydratebydifference': 275.0,
+               'Energy': 2000.0}
+
+
 def summing_values(mul):
     foodItems = []
     final_result = dict()
@@ -52,7 +80,7 @@ def summing_values(mul):
             for k in j:
                 x = k[0]
                 split_ = x.split(",")
-                foodItems.append(split_[0])
+                foodItems.append("".join(split_))
         else:
             summed_value = list()
             units = ""
@@ -74,12 +102,18 @@ def summing_values(mul):
                 summed_value.append(k)
             sum_ = round(sum_, 2)
             i = ''.join(e for e in i if e.isalnum())
-            final_result[i] = (sum_, units, str(sum_)+" "+units)
+            final_result[i] = [sum_, units, str(sum_)+" "+units]
     food_items = ""
     for i in foodItems:
-        food_items += ", " + i.title()
+        food_items += " | " + i.title()
     food_items = food_items.strip()
-    final_result['foodItems'] = (food_items[2:], len(foodItems), foodItems)
+    final_result['foodItems'] = [food_items[2:], len(foodItems), foodItems]
+    percentage = DVpercentage(daily_value, final_result)
+    for i, j in final_result.items():
+        if i in percentage:
+            final_result[i].append(str(percentage[i])+'%')
+        else:
+            final_result[i].append(str(0)+'%')
     return final_result
 
 
@@ -110,13 +144,16 @@ def home():
 def whyN():
     return render_template('whyN.html')
 
+
 @app.route('/About')
 def About():
     return render_template('About.html')
 
+
 @app.route('/Questions')
 def Questions():
     return render_template('Questions.html')
+
 
 @app.route('/credits')
 def credits():

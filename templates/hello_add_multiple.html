@@ -127,7 +127,9 @@
             <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('About') }}">About Our Project</a>
+            <a class="nav-link" href="{{ url_for('About') }}"
+              >About Our Project</a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('Questions') }}">Questions</a>
@@ -218,6 +220,9 @@
                     <b>Calories</b>
                     {{item.Energy[2]}}
                   </th>
+                  <td>
+                    <b>{{item.Energy[3]}}</b>
+                  </td>
                 </tr>
                 <tr>
                   <th colspan="2">
@@ -225,7 +230,7 @@
                     {{item.Totallipidfat[2]}}
                   </th>
                   <td>
-                    <b>22%</b>
+                    <b>{{item.Totallipidfat[3]}}</b>
                   </td>
                 </tr>
                 <tr>
@@ -235,7 +240,7 @@
                     {{item.Fattyacidstotalsaturated[2]}}
                   </th>
                   <td>
-                    <b>22%</b>
+                    <b>{{item.Fattyacidstotalsaturated[3]}}</b>
                   </td>
                 </tr>
                 <tr>
@@ -252,7 +257,7 @@
                     {{item.Cholesterol[2]}}
                   </th>
                   <td>
-                    <b>18%</b>
+                    <b>{{item.Cholesterol[3]}}</b>
                   </td>
                 </tr>
                 <tr>
@@ -261,7 +266,7 @@
                     {{item.SodiumNa[2]}}
                   </th>
                   <td>
-                    <b>2%</b>
+                    <b>{{item.SodiumNa[3]}}</b>
                   </td>
                 </tr>
                 <tr>
@@ -270,7 +275,7 @@
                     {{item.Carbohydratebydifference[2]}}
                   </th>
                   <td>
-                    <b>6%</b>
+                    <b>{{item.Carbohydratebydifference[3]}}</b>
                   </td>
                 </tr>
                 <tr>
@@ -280,7 +285,7 @@
                     {{item.Fibertotaldietary[2]}}
                   </th>
                   <td>
-                    <b>4%</b>
+                    <b>{{item.Fibertotaldietary[3]}}</b>
                   </td>
                 </tr>
                 <tr>
