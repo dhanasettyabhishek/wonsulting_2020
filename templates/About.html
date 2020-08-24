@@ -1,66 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Wonsulting 2020!</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/healthy.ico"
+    />
+    <style>
+      body {
+        background: #b2cccc;
+      }
 
+      #notes div {
+        position: relative;
+        width: 300px;
+        min-height: 100px;
+        margin: 25px auto;
+        padding: 30px 15px 0px 15px;
+        background: 	#ececec no-repeat 4px 8px;
+        -webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 1px 2px #000;
+        -webkit-transform: rotate(-0.5deg);
+        -moz-transform: rotate(-0.5deg);
+        -o-transform: rotate(-0.5deg);
+      }
+
+      #notes div:nth-child(even) {
+        -webkit-transform: rotate(0.5deg);
+        -moz-transform: rotate(0.5deg);
+        -o-transform: rotate(0.5deg);
+      }
+
+      #notes div p {
+        text-align: center;
+        font: normal normal normal 40px/48px "Reenie Beanie", Helvetica, Arial,
+          sans-serif;
+        color: #000;
+        text-shadow: white 1px 1px 0px;
+        overflow: hidden;
+      }
+
+      #notes div::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: 250px;
+        top: -15px;
+        width: 75px;
+        height: 35px;
+        z-index: 2;
+        background-color: rgba(243, 245, 228, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        -webkit-box-shadow: 0 0 5px #888;
+        -moz-box-shadow: 0 0 5px #888;
+        box-shadow: 2px 2px 2px #000;
+        -webkit-transform: rotate(-6deg);
+        -moz-transform: rotate(-6deg);
+        -o-transform: rotate(-6deg);
+      }
+
+      #notes div:nth-child(even)::before {
+        -webkit-transform: rotate(6deg);
+        -moz-transform: rotate(6deg);
+        -o-transform: rotate(6deg);
+      }
+    </style>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Abraca Data</a>
-        <button
-          class="navbar-toggler d-lg-none"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{ url_for('home') }}">Home </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">About Our Project<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('Questions') }}">Questions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('home') }}#ourteam">Our Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('credits') }}">Credits</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <h1><center>About Our Project</center></h1><br />
-      <h5><center>Hello! Welcome to our page. We are so glad you're here!</center></h5><br />
-      <div class= 'container'>
-      <p>We are Abraca-data, the creators of this online recommender system for you. Our team saw the need to address a nation-wide issue with nutrition in the United States, and wanted to share this interactive tool to help you discover the benefits of nutritional food intake as our solution. <br /><br />
-    
-        We like to keep things simple, intuitive, and easy to understand with data. We want to make this data available to as many people as possible so YOU have access and are in charge of taking the first step forward to living a healthy lifestyle. <br /><br />
-        
+      <a class="navbar-brand" href="#">Abraca Data</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('home') }}">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >About Our Project<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('Questions') }}">Questions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}#ourteam"
+              >Our Team</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('credits') }}">Credits</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <h1><center>About Our Project</center></h1>
+    <br />
+    <h5>
+      <center>Hello! Welcome to our page. We are so glad you're here!</center>
+    </h5>
+    <br />
+    <div class="container">
+      <p>
+        We are Abraca-data, the creators of this online recommender system for
+        you. Our team saw the need to address a nation-wide issue with nutrition
+        in the United States, and wanted to share this interactive tool to help
+        you discover the benefits of nutritional food intake as our solution.
+        <br /><br />
+
+        We like to keep things simple, intuitive, and easy to understand with
+        data. We want to make this data available to as many people as possible
+        so YOU have access and are in charge of taking the first step forward to
+        living a healthy lifestyle. <br /><br />
+
         Our journey begins here.
       </p>
+    </div>
+    <div class="container">
+      <div class="row" id="notes">
+        <div class="col-sm">
+          <p>
+            <h4><center><u>Our Mission</u></center></h4>
+            <p style="font-size: 18px; font-style: oblique;">Our mission at Abraca-data is to develop a hassle-free experience
+            with exploring food intake options based on your meals of the day
+          </p>
+        </p>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-sm">
+          <p>
+          <h4><center><u>Our Values</u></center></h4>
+            <p style="font-size: 18px; font-style: oblique;">At our core, Abraca-data uses data to make informed, driven
+              decisions that will improve our lifestyles. We operate on logic,
+              inclusivity, and impact.
+            </p>
+          </p>
+        </div>
       </div>
-      
+      <div class="row" id="notes">
+        <div class="col-sm">
+          <p>
+            <h4><center><u>Our Promise</u></center></h4>
+            <p style="font-size: 18px; font-style: oblique;">We offer an online tool that is simple, intuitive, and easy to
+              understand for our audience to recognize the value to nutrition in
+              their daily lives.
+            </p>
+          </p>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-sm">
+          <p>
+            <h4><center><u>Our Culture</u></center></h4>
+            <p style="font-size: 18px; font-style: oblique;">At Abraca-data, we live in a world full of data. We explore,
+              analyze, and find hidden patterns in datasets together. We visualize
+              and tackle on those data challenges to reach the outcome solution.  
+            </p>
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
