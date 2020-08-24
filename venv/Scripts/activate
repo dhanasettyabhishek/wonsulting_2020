@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\OneDrive\OneDrive - University of Cincinnati\Wonsulting\wonsulting_2020\wonsulting_flask\venv"
+VIRTUAL_ENV="C:\OneDrive\OneDrive - University of Cincinnati\Wonsulting\wonsulting_2020\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

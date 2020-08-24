@@ -1,4 +1,4 @@
-#!"c:\OneDrive\OneDrive - University of Cincinnati\Wonsulting\wonsulting_2020\wonsulting_flask\venv\Scripts\python.exe"
+#!"c:\OneDrive\OneDrive - University of Cincinnati\Wonsulting\wonsulting_2020\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'autopep8==1.5.4','console_scripts','autopep8'
 __requires__ = 'autopep8==1.5.4'
 import re
