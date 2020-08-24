@@ -1,0 +1,9 @@
+---
+handlers:
+  - static_dir: static
+    url: /static
+  - script: auto
+    url: /.*
+runtime: python
+runtime_config:
+  python_version: 3
