@@ -16,10 +16,22 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/healthy.ico"
+    />
+    <style>
+      li {
+        list-style-type: none;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{ url_for('home') }}">Know Your Nutrition</a>
+      <a class="navbar-brand" href="{{ url_for('home') }}"
+        >Know Your Nutrition</a
+      >
       <button
         class="navbar-toggler d-lg-none"
         type="button"
@@ -31,8 +43,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="collapsibleNavId"
+      >
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('home') }}">Home </a>
           </li>
@@ -63,47 +78,65 @@
     <h1><center>Questions</center></h1>
     <br /><br />
     <div class="container">
-      <ol>
+      <ul>
         <li>
-          What is the value of nutriton and why is it important to know,
+          1. What is the value of nutrition and why is it important to know,
           especially in the U.S.?
         </li>
-        Please see the section, "Why Nutrition?" on this website for your
-        reference. More details are mentioned there.<br /><br />
         <li>
-          Why did your team decide to showcase the information on a website
+          A. Please see the section, "Why Nutrition?" on this website for your
+          reference. More details are mentioned there.
+        </li>
+        <br />
+        <li>
+          2. Why did your team decide to showcase the information on a website
           versus other platforms?
         </li>
-        We realized that the vast amount of information found from the original
-        food dataset would not be suitable to view on mobile devices. Hence, we
-        chose to build a website to make it easy to read and understand for our
-        audience. This helps to improve visibility and navigation for our
-        audience as they interact with our website.<br /><br />
-        <li>Where did you get the data and when?</li>
-        We retrieved the food datasets from the U.S. Department of Agriculture
-        research services page here
-        (https://fdc.nal.usda.gov/download-datasets.html). We used the most
-        recent dataset available, which was updated in April 2020.<br /><br />
         <li>
-          How did you illustrate specific nutrient values for different food
+          A. We realized that the vast amount of information found from the
+          original food dataset would not be suitable to view on mobile devices.
+          Hence, we chose to build a website to make it easy to read and
+          understand for our audience. This helps to improve visibility and
+          navigation for our audience as they interact with our website.
+        </li>
+        <br />
+        <li>3. Where did you get the data and when?</li>
+        <li>
+          A. We retrieved the food datasets from the U.S. Department of
+          Agriculture research services page here
+          (https://fdc.nal.usda.gov/download-datasets.html). We used the most
+          recent dataset available, which was updated in April 2020.
+        </li>
+        <br />
+        <li>
+          4. How did you illustrate specific nutrient values for different food
           intake?
         </li>
-        After analyzing the data from USDA, we were able to find the nutritional
-        facts for each food item. After comparing multiple food items, we
-        aggregated the common nutritional fact values and update the values in
-        our portal.<br /><br />
-        <li>Who is the intended audience for this website?</li>
-        This website can apply to anyone, but is most beneficial to
-        pediatricians and parents.<br /><br />
         <li>
-          Do you have a visual guide of what portions of food groups to consume
-          daily?
+          A. After analyzing the data from USDA, we were able to find the
+          nutritional facts for each food item. After comparing multiple food
+          items, we aggregated the common nutritional fact values and update the
+          values in our portal.
         </li>
-        Here is a sample of what a daily intake on a plate could look like
-        below. However, it's best to consult with your doctor before making any
-        changes to your diet. Please keep in mind that any nutrition information
-        listed on this site is for illustrative purposes only.<br />
-      </ol>
+        <br />
+        <li>5. Who is the intended audience for this website?</li>
+        <li>
+          A. This website can apply to anyone, but is most beneficial to
+          pediatricians and parents.
+        </li>
+        <br />
+        <li>
+          6. Do you have a visual guide of what portions of food groups to
+          consume daily?
+        </li>
+        <li>
+          A. Here is a sample of what a daily intake on a plate could look like
+          below. However, it's best to consult with your doctor before making
+          any changes to your diet. Please keep in mind that any nutrition
+          information listed on this site is for illustrative purposes only.
+        </li>
+        <br />
+      </ul>
       <img src="../static/ques.png" alt="" /><br />
       <p style="font-size: 12px;">Image Source: Health Canada, 2019</p>
     </div>

@@ -128,11 +128,6 @@ def convert(to_unit, from_unit, value):
     return result
 
 
-@app.route('/search')
-def search_engine():
-    return render_template('search.html')
-
-
 @app.route('/')
 def home():
     with open('description.json') as f:
@@ -213,10 +208,13 @@ def result():
     labels = ['Protein', 'Totallipidfat',
               'Carbohydratebydifference', 'SugarstotalincludingNLEA']
     labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
+    colors = ['green', 'yellow', 'red', 'blue']
     values = []
     for i in labels:
         values.append(df[i][0])
-    fig = go.Figure(data=[go.Bar(y=labels2, x=values, orientation='h')])
+    fig = go.Figure(
+        data=[go.Bar(y=labels2, x=values, orientation='h', marker_color=colors)])
+
     fig.update_layout(title_text='Nutrition Plot', yaxis=dict(
         title='Nutriants',
     ), xaxis=dict(

@@ -84,6 +84,11 @@
       .thick-end {
         border-bottom: 10px solid black;
       }
+      .ui-autocomplete {
+        cursor: pointer;
+        height: 160px;
+        overflow-y: scroll;
+      }
     </style>
     <!-- Bootstrap CSS -->
     <link
@@ -98,7 +103,7 @@
       href="{{ url_for('static',filename='styles/application.css') }}"
     />
     <link
-      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
+      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
       rel="stylesheet"
     />
   </head>
@@ -116,8 +121,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="collapsibleNavId"
+      >
+        <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
               >Home <span class="sr-only">(current)</span></a
