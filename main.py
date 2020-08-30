@@ -191,24 +191,30 @@ def result():
             X = summing_values(api_value)
             data.append(X)
     L = api_value['Energy']
-    cal_ = [0]
+    cal_ = []
     value = 0
     for k in L:
         if k[1] == 'kJ':
-            value += convert('kcal', 'kJ', k[0])
+            value = convert('kcal', 'kJ', k[0])
             cal_.append(value)
         else:
-            value += k[0]
+            value = k[0]
             cal_.append(value)
-
-    split_ = ['Start']+X['foodItems'][2]
+    target = 2000
+    temp = 0
+    for i in cal_:
+        temp = target - i
+        target = temp
+    cal_.append(temp)
+    split_ = X['foodItems'][2]
+    split_.append("Remaining value")
     print(cal_, split_)
     # # Plot
     df = pd.DataFrame(X)
     labels = ['Protein', 'Totallipidfat',
               'Carbohydratebydifference', 'SugarstotalincludingNLEA']
     labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
-    colors = ['green', 'yellow', 'red', 'blue']
+    colors = ['lightcyan', 'cyan', 'royalblue', 'darkblue']
     values = []
     for i in labels:
         values.append(df[i][0])
@@ -223,12 +229,13 @@ def result():
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Plot 2
-    fig2 = go.Figure(data=go.Scatter(x=split_, y=cal_))
-    fig2.update_layout(title_text='Total calories plot', yaxis=dict(
-        title='Calories',
-    ), xaxis=dict(
-        title='Food Items',
-    ))
+    # fig2 = go.Figure(data=go.Scatter(x=split_, y=cal_))
+    fig2 = go.Figure(data=go.Pie(labels=split_, values=cal_))
+    # fig2.update_layout(title_text='Total calories plot', yaxis=dict(
+    #     title='Calories',
+    # ), xaxis=dict(
+    #     title='Food Items',
+    # ))
     graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description)
 

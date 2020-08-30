@@ -83,7 +83,12 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{ url_for('home') }}">Know Your Nutrition</a>
+      <a class="navbar-brand" href="{{ url_for('home') }}"><img
+        class="img-fluid"
+        src="../static/white-and-black-cooking-chef-gray (1).PNG"
+        alt=""
+        width="115px"
+      /></a>
       <button
         class="navbar-toggler d-lg-none"
         type="button"
@@ -98,26 +103,26 @@
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="{{ url_for('home') }}">Home </a>
+            <a class="nav-link" href="{{ url_for('home') }}" style="font-size: 17px">Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?</a>
+            <a class="nav-link" href="{{ url_for('whyN') }}" style="font-size: 17px">Why Nutrition?</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              >About Our Project<span class="sr-only">(current)</span></a
+              >About Our Project<span class="sr-only" style="font-size: 17px">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('Questions') }}">Questions</a>
+            <a class="nav-link" href="{{ url_for('Questions') }}" style="font-size: 17px">Questions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home') }}#ourteam"
+            <a class="nav-link" href="{{ url_for('home') }}#ourteam" style="font-size: 17px"
               >Our Team</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('credits') }}">Credits</a>
+            <a class="nav-link" href="{{ url_for('credits') }}" style="font-size: 17px">Credits</a>
           </li>
         </ul>
       </div>
