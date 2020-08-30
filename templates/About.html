@@ -82,21 +82,20 @@
     />
   </head>
   <body>
-    <div style="background-image: url('static/w3.png'); background-repeat: no-repeat; background-position:center ;" />
+    <div
+      style="
+        background-image: url('static/w3.png');
+        background-repeat: no-repeat;
+        background-position: center;
+      "
+    />
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="{{ url_for('home') }}"><img
         class="img-fluid"
-<<<<<<< HEAD
-        src="../static/white-and-black-cooking-chef-gray (1).PNG"
-        alt=""
-        width="115px"
-      /></a>
-=======
         src="../static/logo.png"
         alt=""
-        width="125px"
+        width="115px"
     /></a>
->>>>>>> d2651eaa94ec80738f00ce421ad08dc74213b7ad
       <button
         class="navbar-toggler d-lg-none"
         type="button"
@@ -110,15 +109,15 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('home') }}" style="font-size: 17px">Home </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('whyN') }}" style="font-size: 17px">Why Nutrition?</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >About Our Project<span class="sr-only" style="font-size: 17px">(current)</span></a
+            <a class="nav-link" href="{{ url_for('About') }}" style="font-size: 17px"
+              >About Our Project<span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">

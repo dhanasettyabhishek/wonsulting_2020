@@ -219,7 +219,7 @@ def result():
     for i in labels:
         values.append(df[i][0])
     fig = go.Figure(
-        data=[go.Bar(y=labels2, x=values, orientation='h', marker_color=colors)])
+        data=[go.Bar(y=labels2, x=values, orientation='h', marker_color=colors, text=list(map(lambda orig_string: str(orig_string) + ' g', values)), textposition='auto')])
 
     fig.update_layout(title_text='Nutrition Plot', yaxis=dict(
         title='Nutriants',
@@ -231,11 +231,16 @@ def result():
     # Plot 2
     # fig2 = go.Figure(data=go.Scatter(x=split_, y=cal_))
     fig2 = go.Figure(data=go.Pie(labels=split_, values=cal_))
-    # fig2.update_layout(title_text='Total calories plot', yaxis=dict(
-    #     title='Calories',
-    # ), xaxis=dict(
-    #     title='Food Items',
-    # ))
+    fig2.update_traces(textinfo='value')
+    fig2.update_layout(
+        title_text='Source of Calories (based on recommended 2,000 cal. )')
+    fig2.update_layout(
+        legend=dict(
+            x=0.5,
+            y=-0.25,
+            traceorder="reversed"
+        )
+    )
     graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description)
 
