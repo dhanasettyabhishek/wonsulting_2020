@@ -13,6 +13,8 @@
       type="image/x-icon"
       href="../static/healthy.ico"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" rel="stylesheet" />
     <style>
       .performance-facts {
         border: 1px solid black;
@@ -89,7 +91,36 @@
         height: 160px;
         overflow-y: scroll;
       }
+      .wrapper{
+  width:100%;
+  padding-top: 20px;
+  text-align:center;
+}
+h2{
+  font-family:sans-serif;
+  color:rgb(20, 19, 19);
+}
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  width:100%;
+  border: 2px solid rgb(250, 248, 248);
+}
+
+.slick-prev:before{
+  color :rgb(20, 19, 19);
+}
+.slick-next:before{
+  color :rgb(20, 19, 19);
+}
+
     </style>
+        
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -392,91 +423,26 @@
     </div>
     <br /><br />
     <hr />
-    <div>
-      <div id="gallery" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/FreeVector-Fruit-Composition.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/cheznut-01.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/FreeVector-Fruits-And-Vegetables-Vector.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/HEALTHY_FOOD.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/WHOLE_GRAINS.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="col">
-                  <img
-                    class="img-fluid"
-                    src="../static/EAT_MORE_PROTEIN.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <a
-          class="carousel-control-prev"
-          href="#gallery"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-
-        <a
-          class="carousel-control-next"
-          href="#gallery"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+    <div class="wrapper">
+      <div class="carousel">
+        <div><img class="img-fluid" src="../static/Carousel/Apple.jpg" alt=""/><h5>Apples</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/Bananas.jpg" alt=""/><h5>Bananas</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/beef.jpg" alt=""/><h5>Beef</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/blueberries.jpg" alt=""/><h5>Blueberries</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/carrots.jpg" alt=""/><h5>Carrots</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/cheddar.jpg" alt=""/><h5>Cheddar Cheese</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/Cherries.jpg" alt=""/><h5>Cherries</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/chicken.jpg" alt=""/><h5>Chicken</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/eggs.jpg" alt=""/><h5>Eggs</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/grapes.jpg" alt=""/><h5>Grapes</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/kale.jpg" alt=""/><h5>Kale</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/potatoes.jpg" alt=""/><h5>Potatoes</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/spinach.jpg" alt=""/><h5>Spinach</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/Strawberry.jpg" alt=""/><h5>Strawberries</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/tomatoes.jpg" alt=""/><h5>Tomatoes</h5></div>
+        <div><img class="img-fluid" src="../static/Carousel/wholemilk.jpg" alt=""/><h5>Whole Milk</h5></div>
       </div>
-    </div>
+      </div>  
     <br /><br />
     <hr />
     <div id="ourteam">
@@ -640,5 +606,18 @@
         });
       });
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
+        <script>
+          $(document).ready(function(){
+      $('.carousel').slick({
+      slidesToShow: 4,
+      dots:true,
+      centerMode: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      infinite: true
+      });
+    });
+        </script>
   </body>
 </html>
