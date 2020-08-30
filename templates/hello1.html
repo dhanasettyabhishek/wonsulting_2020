@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Know Your Nutrition!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/healthy.ico"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/application.css') }}"
+    />
+    <link
+      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" rel="stylesheet" />
+    <style>
+      .ui-autocomplete {
+        cursor: pointer;
+        height: 160px;
+        overflow-y: scroll;
+      }
+.wrapper{
+  width:100%;
+  padding-top: 20px;
+  text-align:center;
+}
+h2{
+  font-family:sans-serif;
+  color:rgb(20, 19, 19);
+}
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  width:100%;
+  border: 2px solid rgb(250, 248, 248);
+}
+
+.slick-prev:before{
+  color :rgb(20, 19, 19);
+}
+.slick-next:before{
+  color :rgb(20, 19, 19);
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Know Your Nutrition</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="collapsibleNavId"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('whyN') }}">Why Nutrition?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('About') }}"
+              >About Our Project</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('Questions') }}">Questions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ourteam">Our Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('credits') }}">Credits</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br /><br />
+
+    <div class="justify-content-center align-items-center">
+      <h2 class="text-center">Find Nutrition Value</h2>
+      <h4 class="text-center">
+        Explore a variety of food items featured in our database.<br />
+        Search for a food item to calculate its nutrient value.<br />
+      </h4>
+      <br />
+
+      <form
+        class="row form-inline justify-content-center align-items-center"
+        action="{{ url_for('result') }}"
+        method="post"
+      >
+        <span class="col blank-cell"></span>
+        <input
+          id="autocomplete2"
+          class="col form-control mr-sm-3"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          name="projectFilepath"
+        />
+        <input
+          class="col-sm-0 btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+          value="Search"
+        />
+        <span class="col blank-cell"></span>
+      </form>
+    </div>
+    <br />
+    <br /><br />
+    <hr/>
+    <div class="wrapper">
+    <div class="carousel">
+      <div><img class="img-fluid" src="../static/Carousel/Apple.jpg" alt=""/><h5>Apples</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/Bananas.jpg" alt=""/><h5>Bananas</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/beef.jpg" alt=""/><h5>Beef</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/blueberries.jpg" alt=""/><h5>Blueberries</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/carrots.jpg" alt=""/><h5>Carrots</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/cheddar.jpg" alt=""/><h5>Cheddar Cheese</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/Cherries.jpg" alt=""/><h5>Cherries</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/chicken.jpg" alt=""/><h5>Chicken</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/eggs.jpg" alt=""/><h5>Eggs</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/grapes.jpg" alt=""/><h5>Grapes</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/kale.jpg" alt=""/><h5>Kale</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/potatoes.jpg" alt=""/><h5>Potatoes</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/spinach.jpg" alt=""/><h5>Spinach</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/Strawberry.jpg" alt=""/><h5>Strawberries</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/tomatoes.jpg" alt=""/><h5>Tomatoes</h5></div>
+      <div><img class="img-fluid" src="../static/Carousel/wholemilk.jpg" alt=""/><h5>Whole Milk</h5></div>
+    </div>
+    </div>    
+    <br /><br />
+    <hr />
+    <div id="ourteam">
+      <h2 class="text-center" aria-hidden="true">Meet our team</h2>
+      <h5 class="text-center">
+        Learn more about each member of Abraca-data <br />
+        for the Wonsulting Project 2020. <br />
+      </h5>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col offset-sm-1">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Abhi.jpg"
+              alt="team member Abhi"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
+          </div>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "As a data enthusiast, I love to explore and analyze data. I
+                believe that if we exploring data in the right manner,
+                everything can be analyzed."
+              </p>
+            </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-title">
+          <h6>Abhishek Dhanasetty</h6>
+          <span>Data Scientist</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Div.jpeg"
+              alt="team member Div"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
+          </div>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "Finding patterns and building models around it is my passion."
+              </p>
+            </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-title">
+          <h6>Divija Reddy Tippa Reddy</h6>
+          <span>Data Scientist</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Jen.JPG"
+              alt="team member Jen"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
+          </div>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "Project management is the heart of what I do. I plan,
+                coordinate, and execute the project steps from start to finish
+                with our team."
+              </p>
+            </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-title">
+          <h6>Jennifer Duong</h6>
+          <span>Project Manager</span>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <div class="card-footer bg-dark text-muted">
+      <br />
+      <h3>
+        <i class="fa fa-copyright"><center>Abraca-data, 2020</center></i>
+      </h3>
+      <br />
+      <br />
+      <br />
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+      var data = {{description|safe}};
+      $(function () {
+        $("#autocomplete2").autocomplete({
+          source: data,
+          scroll: true,
+          focus: function (event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+            $('input[name="projectFilepath"]').val(ui.item.label);
+          },
+          select: function (event, ui) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+            $("#autocomplete2-value").val(ui.item.label);
+          },
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
+    <script>
+      $(document).ready(function(){
+  $('.carousel').slick({
+  slidesToShow: 4,
+  dots:true,
+  centerMode: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  infinite: true
+  });
+});
+    </script>
+  </body>
+</html>
