@@ -157,15 +157,31 @@ def credits():
 
 set_food_id = set()
 
+key_value = {'apples_.x': 'apples', 'banana_.x': 'bananas',
+             "beef_.x": "beef, ground, 85% lean meat / 15% fat (includes foods for usda's food distribution program)", "blueberries_.x":
+             "blueberries", "carrots_.x": "carrots", "cheddar_cheese_.x":
+             "cheese, cheddar, sharp, sliced", "cherries_.x": "cherries, sour, red", "chicken_.x": "chicken, skin (drumsticks and thighs)",
+             "eggs_.x": "egg, whole, fresh", "grapes_.x": "grapes, american type (slip skin)", "kale_.x": "kale", "potatoes_.x": "potatoes, flesh and skin",
+             "spinach_.x": "spinach", "strawberries_.x": "strawberries",
+             "tomatoes_.x": "tomatoes, red, ripe, year round average",
+             "whole_milk_.x": "milk, chocolate beverage, hot cocoa, homemade"}
+
 
 @app.route('/results', methods=['POST'])
 def result():
+    # food_id_description = None
     with open('description.json') as f:
         description = json.load(f)
     description_dict = dict()
     for i in description:
         description_dict[i['label']] = i['value']
-    food_id_description = request.form.get('projectFilepath')
+    for key, value in request.form.items():
+        if key == 'projectFilepath':
+            food_id_description = value
+        if key in key_value:
+            food_id_description = key_value[key]
+
+        print("key: {0}, value: {1}".format(key, value))
     food_id = str(description_dict[food_id_description])
     print(food_id)
     food_ids = []

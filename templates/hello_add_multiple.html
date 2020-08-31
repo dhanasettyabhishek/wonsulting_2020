@@ -146,11 +146,7 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="#"
-        ><img
-          class="img-fluid"
-          src="../static/white-and-black-cooking-chef-gray (1).PNG"
-          alt=""
-          width="115px"
+        ><img class="img-fluid" src="../static/logo.PNG" alt="" width="115px"
       /></a>
       <button
         class="navbar-toggler d-lg-none"
@@ -448,84 +444,177 @@
     <br /><br />
     <hr />
     <div class="wrapper">
-      <div class="carousel">
-        <div>
-          <img class="img-fluid" src="../static/Carousel/Apple.jpg" alt="" />
-          <h5>Apples</h5>
+      <form
+        class="row form-inline justify-content-center align-items-center"
+        action="{{ url_for('result') }}"
+        method="post"
+      >
+        <div class="carousel">
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/Apple.jpg"
+              alt=""
+              name="apples_"
+            />
+            <h5>Apples</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/Bananas.jpg"
+              alt=""
+              name="banana_"
+            />
+            <h5>Bananas</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/beef.jpg"
+              alt=""
+              name="beef_"
+            />
+
+            <h5>Beef</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/blueberries.jpg"
+              alt=""
+              name="blueberries_"
+            />
+            <h5>Blueberries</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/carrots.jpg"
+              alt=""
+              name="carrots_"
+            />
+            <h5>Carrots</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/cheddar.jpg"
+              alt=""
+              name="cheddar_cheese_"
+            />
+            <h5>Cheddar Cheese</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/Cherries.jpg"
+              alt=""
+              name="cherries_"
+            />
+            <h5>Cherries</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/chicken.jpg"
+              alt=""
+              name="chicken_"
+            />
+            <h5>Chicken</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/eggs.jpg"
+              alt=""
+              name="eggs_"
+            />
+            <h5>Eggs</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/grapes.jpg"
+              alt=""
+              name="grapes_"
+            />
+            <h5>Grapes</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/kale.jpg"
+              alt=""
+              name="kale_"
+            />
+            <h5>Kale</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/potatoes.jpg"
+              alt=""
+              name="potatoes_"
+            />
+
+            <h5>Potatoes</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/spinach.jpg"
+              alt=""
+              name="spinach_"
+            />
+
+            <h5>Spinach</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/Strawberry.jpg"
+              alt=""
+              name="strawberries_"
+            />
+            <h5>Strawberries</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/tomatoes.jpg"
+              alt=""
+              name="tomatoes_"
+            />
+            <h5>Tomatoes</h5>
+          </div>
+          <div>
+            <input
+              type="image"
+              class="img-fluid"
+              src="../static/Carousel/wholemilk.jpg"
+              alt=""
+              name="whole_milk_"
+            />
+            <h5>Whole Milk</h5>
+          </div>
         </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/Bananas.jpg" alt="" />
-          <h5>Bananas</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/beef.jpg" alt="" />
-          <h5>Beef</h5>
-        </div>
-        <div>
-          <img
-            class="img-fluid"
-            src="../static/Carousel/blueberries.jpg"
-            alt=""
-          />
-          <h5>Blueberries</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/carrots.jpg" alt="" />
-          <h5>Carrots</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/cheddar.jpg" alt="" />
-          <h5>Cheddar Cheese</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/Cherries.jpg" alt="" />
-          <h5>Cherries</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/chicken.jpg" alt="" />
-          <h5>Chicken</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/eggs.jpg" alt="" />
-          <h5>Eggs</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/grapes.jpg" alt="" />
-          <h5>Grapes</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/kale.jpg" alt="" />
-          <h5>Kale</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/potatoes.jpg" alt="" />
-          <h5>Potatoes</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/spinach.jpg" alt="" />
-          <h5>Spinach</h5>
-        </div>
-        <div>
-          <img
-            class="img-fluid"
-            src="../static/Carousel/Strawberry.jpg"
-            alt=""
-          />
-          <h5>Strawberries</h5>
-        </div>
-        <div>
-          <img class="img-fluid" src="../static/Carousel/tomatoes.jpg" alt="" />
-          <h5>Tomatoes</h5>
-        </div>
-        <div>
-          <img
-            class="img-fluid"
-            src="../static/Carousel/wholemilk.jpg"
-            alt=""
-          />
-          <h5>Whole Milk</h5>
-        </div>
-      </div>
+      </form>
     </div>
     <br /><br />
     <hr />
