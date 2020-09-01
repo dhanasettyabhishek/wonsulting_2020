@@ -75,7 +75,7 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="{{ url_for('home') }}"
-        ><img class="img-fluid" src="../static/logo.PNG" alt="" width="115px"
+        ><img class="img-fluid" src="../static/logo.PNG" alt="" width="130px"
       /></a>
       <button
         class="navbar-toggler d-lg-none"
@@ -149,35 +149,41 @@
       <br />
 
       <form
-        class="row form-inline justify-content-center align-items-center"
+        class="form-inline justify-content-center align-items-center"
         action="{{ url_for('result') }}"
         method="post"
+        name="search_form"
       >
-        <span class="col blank-cell"></span>
-        <input
-          id="autocomplete2"
-          class="col form-control mr-sm-3"
-          type="text"
-          placeholder="Search"
-          aria-label="Search"
-          name="projectFilepath"
-        />
-        <input
-          class="col-sm-0 btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-          value="Search"
-        />
-        <span class="col blank-cell"></span>
+        <br />
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3"></div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              id="autocomplete2"
+              class="col-sm-4 form-control"
+              type="text"
+              placeholder="Select a food item"
+              aria-label="Search"
+              name="projectFilepath"
+              oninput="validateSearch();"
+              required
+            />
+            <div class="col-sm-2">
+              <input
+                class="col-sm-0 btn btn-outline-success"
+                type="submit"
+                value="Search"
+              />
+            </div>
+          </div>
+        </div>
       </form>
     </div>
     <br />
     <br />
     <div class="wrapper">
-      <form
-        class="row form-inline justify-content-center align-items-center"
-        action="{{ url_for('result') }}"
-        method="post"
-      >
+      <form action="{{ url_for('result') }}" method="post">
         <div class="carousel">
           <div>
             <input
@@ -454,12 +460,15 @@
     <div class="card-footer bg-dark text-muted">
       <br />
       <h3>
-        <i class="fa fa-copyright"><center>Abraca-data, 2020</center></i>
+        <i class="fa fa-copyright"><center>Wonsulting, 2020</center></i>
       </h3>
-      <br />
+      <h4>
+        <i class="fa fa-copyright"><center>Abraca-data</center></i>
+      </h4>
       <br />
       <br />
     </div>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -509,6 +518,21 @@
           infinite: true,
         });
       });
+    </script>
+    <script>
+      var val_data = {{validation|safe}};
+      console.log(val_data);
+      var search_bar_text = document.getElementById('autocomplete2');
+      function validateSearch(){
+        var search_value = document.forms["search_form"]["projectFilepath"].value;
+        var input_ = document.querySelector("#autocomplete2")
+        console.log($.inArray(search_value, val_data));
+        if($.inArray(search_value, val_data) != -1){
+          input_.setCustomValidity("");
+        }else{
+          input_.setCustomValidity("Please select an option from the suggested list.");
+        }
+      }
     </script>
   </body>
 </html>

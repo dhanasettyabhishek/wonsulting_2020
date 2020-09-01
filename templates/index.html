@@ -13,6 +13,22 @@
       type="image/x-icon"
       href="../static/healthy.ico"
     />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/application.css') }}"
+    />
+    <link
+      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
+      rel="stylesheet"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css"
       rel="stylesheet"
@@ -22,76 +38,6 @@
       rel="stylesheet"
     />
     <style>
-      .performance-facts {
-        border: 1px solid black;
-        margin: 20px;
-        float: left;
-        width: 350px;
-        padding: 0.5rem;
-      }
-      .performance-facts__title {
-        font-weight: bold;
-        font-size: 2rem;
-        margin: 0 0 0.25rem 0;
-      }
-      .performance-facts__header {
-        border-bottom: 10px solid black;
-        padding: 0 0 0.25rem 0;
-        margin: 0 0 0.5rem 0;
-        p {
-          margin: 0;
-        }
-      }
-      .performance-facts__table {
-        width: 100%;
-        thead tr {
-          th,
-          td {
-            border: 0;
-          }
-        }
-        th,
-        td {
-          font-weight: normal;
-          text-align: left;
-          padding: 0.25rem 0;
-          border-top: 1px solid black;
-          white-space: nowrap;
-        }
-        td {
-          &:last-child {
-            text-align: right;
-          }
-        }
-
-        .thick-row {
-          th,
-          td {
-            border-top-width: 5px;
-          }
-        }
-      }
-      .small-info {
-        font-size: 0.8rem;
-      }
-
-      .performance-facts__table--small {
-        @extend .performance-facts__table;
-        border-bottom: 1px solid #999;
-        margin: 0 0 0.5rem 0;
-        thead {
-          tr {
-            border-bottom: 2px solid black;
-          }
-        }
-      }
-
-      .text-center {
-        text-align: center;
-      }
-      .thick-end {
-        border-bottom: 10px solid black;
-      }
       .ui-autocomplete {
         cursor: pointer;
         height: 160px;
@@ -125,27 +71,10 @@
         color: rgb(20, 19, 19);
       }
     </style>
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static',filename='styles/application.css') }}"
-    />
-    <link
-      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/start/jquery-ui.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"
+      <a class="navbar-brand" href="{{ url_for('home') }}"
         ><img class="img-fluid" src="../static/logo.PNG" alt="" width="130px"
       /></a>
       <button
@@ -210,7 +139,6 @@
       </div>
     </nav>
     <br /><br />
-
     <div class="justify-content-center align-items-center">
       <h2 class="text-center">Find Nutrition Value</h2>
       <h4 class="text-center">
@@ -229,7 +157,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-3"></div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input
               id="autocomplete2"
               class="col-sm-4 form-control"
@@ -240,18 +168,11 @@
               oninput="validateSearch();"
               required
             />
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <input
                 class="col-sm-0 btn btn-outline-success"
                 type="submit"
                 value="Search"
-              />
-              &nbsp;&nbsp;
-              <input
-                class="col-sm-0 btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-                value="Add to existing meal"
-                name="add_to_meal"
               />
             </div>
           </div>
@@ -259,199 +180,6 @@
       </form>
     </div>
     <br />
-    <div class="container">
-      {% for item in data %}
-      <center>
-        <h3>
-          <b><i>Nutrition Values for: {{item.foodItems[0]}}</i></b>
-        </h3>
-      </center>
-      {% endfor %}
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md">
-          <br /><br /><br /><br />
-          <section class="performance-facts">
-            <header class="performance-facts__header">
-              <h1 class="performance-facts__title">Nutrition Facts</h1>
-              <p>Serving Size 1 cup (about 100g)</p>
-            </header>
-            <table class="performance-facts__table">
-              {% for item in data %}
-              <thead>
-                <tr>
-                  <th colspan="2" class="small-info">
-                    Amount Per Serving &nbsp;&nbsp;&nbsp;
-                  </th>
-                  <th class="small-info">
-                    <b>% Daily Value*</b>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th colspan="2">
-                    <b>Calories</b>
-                    {{item.Energy[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Energy[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colspan="2">
-                    <b>Total Fat</b>
-                    {{item.Totallipidfat[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Totallipidfat[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="blank-cell"></td>
-                  <th>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Saturated Fat
-                    {{item.Fattyacidstotalsaturated[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Fattyacidstotalsaturated[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="blank-cell"></td>
-                  <th>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Trans Fat
-                    {{item.Fattyacidstotaltrans[2]}}
-                  </th>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th colspan="2">
-                    <b>Cholesterol</b>
-                    {{item.Cholesterol[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Cholesterol[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colspan="2">
-                    <b>Sodium</b>
-                    {{item.SodiumNa[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.SodiumNa[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colspan="2">
-                    <b>Total Carbohydrate</b>
-                    {{item.Carbohydratebydifference[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Carbohydratebydifference[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="blank-cell"></td>
-                  <th>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Dietary Fiber
-                    {{item.Fibertotaldietary[2]}}
-                  </th>
-                  <td>
-                    <b>{{item.Fibertotaldietary[3]}}</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="blank-cell"></td>
-                  <th>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Sugars
-                    {{item.SugarstotalincludingNLEA[2]}}
-                  </th>
-                  <td></td>
-                </tr>
-                <tr class="thick-end">
-                  <th colspan="2">
-                    <b>Protein</b>
-                    {{item.Protein[2]}}
-                  </th>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p class="small-info">
-              * Percent Daily Values are based on a 2,000 calorie diet. Your
-              daily values may be higher or lower depending on your calorie
-              needs:
-            </p>
-
-            <table class="performance-facts__table--small small-info">
-              <thead>
-                <tr>
-                  <td colspan="3"></td>
-                  <th>Calories:</th>
-                  <th>2,000</th>
-                  <th>2,500</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th colspan="3">Total Fat</th>
-                  <td>Less than</td>
-                  <td>65g</td>
-                  <td>80g</td>
-                </tr>
-                <tr>
-                  <th colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;Saturated Fat</th>
-                  <td>Less than</td>
-                  <td>20g</td>
-                  <td>25g</td>
-                </tr>
-                <tr>
-                  <th colspan="3">Cholesterol</th>
-                  <td>Less than</td>
-                  <td>300mg</td>
-                  <td>300 mg</td>
-                </tr>
-                <tr>
-                  <th colspan="3">Sodium</th>
-                  <td>Less than</td>
-                  <td>2,400mg</td>
-                  <td>2,400mg</td>
-                </tr>
-                <tr>
-                  <th colspan="3">Total Carbohydrate</th>
-                  <td class="blank-cell"></td>
-                  <td>300g</td>
-                  <td>375g</td>
-                </tr>
-                <tr>
-                  <th colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;Dietary Fiber</th>
-                  <td class="blank-cell"></td>
-                  <td>25g</td>
-                  <td>30g</td>
-                </tr>
-              </tbody>
-              {% endfor %}
-            </table>
-
-            <p class="small-info">Calories per gram:</p>
-            <p class="small-info text-center">
-              Fat 9 &bull; Carbohydrate 4 &bull; Protein 4
-            </p>
-          </section>
-        </div>
-        <div class="col-md">
-          <div class="chart" id="bargraph"></div>
-          <hr />
-          <div class="chart" id="chart_graph"></div>
-        </div>
-      </div>
-    </div>
-    <br /><br />
-    <hr />
     <div class="wrapper">
       <form action="{{ url_for('result') }}" method="post">
         <div class="carousel">
@@ -621,6 +349,7 @@
         </div>
       </form>
     </div>
+
     <br /><br />
     <hr />
     <div id="ourteam">
@@ -740,6 +469,7 @@
         </div>
       </div>
     </div>
+
     <br /><br />
     <div class="card-footer bg-dark text-muted">
       <br />
@@ -752,6 +482,7 @@
       <br />
       <br />
     </div>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -767,17 +498,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <!-- D3.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-    <script>
-      var graphs = {{v | safe}};
-      Plotly.plot('bargraph', graphs,{});
-    </script>
-    <script>
-      var graphs = {{v2 | safe}};
-      Plotly.plot('chart_graph', graphs,{});
-    </script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
@@ -785,6 +506,7 @@
       $(function () {
         $("#autocomplete2").autocomplete({
           source: data,
+          scroll: true,
           focus: function (event, ui) {
             event.preventDefault();
             $(this).val(ui.item.label);
@@ -817,7 +539,7 @@
       function validateSearch(){
         var search_value = document.forms["search_form"]["projectFilepath"].value;
         var input_ = document.querySelector("#autocomplete2")
-        if($.inArray(search_value, val_data) != -1){
+        if($.inArray(search_value, val_data) !== -1){
           input_.setCustomValidity("");
         }else{
           input_.setCustomValidity("Please select an option from the suggested list.");

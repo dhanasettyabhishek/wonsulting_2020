@@ -132,7 +132,8 @@ def convert(to_unit, from_unit, value):
 def home():
     with open('description.json') as f:
         description = json.load(f)
-    return render_template('hello.html', description=description)
+    validation = list(map(lambda x: x['label'], description))
+    return render_template('index.html', description=description, validation=validation)
 
 
 @app.route('/whyN')
@@ -172,6 +173,7 @@ def result():
     # food_id_description = None
     with open('description.json') as f:
         description = json.load(f)
+    validation = list(map(lambda x: x['label'], description))
     description_dict = dict()
     for i in description:
         description_dict[i['label']] = i['value']
@@ -180,8 +182,6 @@ def result():
             food_id_description = value
         if key in key_value:
             food_id_description = key_value[key]
-
-        print("key: {0}, value: {1}".format(key, value))
     food_id = str(description_dict[food_id_description])
     print(food_id)
     food_ids = []
@@ -258,7 +258,7 @@ def result():
         )
     )
     graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description)
+    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description, validation=validation)
 
 
 if __name__ == "__main__":
