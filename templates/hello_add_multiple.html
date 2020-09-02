@@ -229,17 +229,8 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-3"></div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input
-              id="autocomplete2"
-              class="col-sm-4 form-control"
-              type="text"
-              placeholder="Select a food item"
-              aria-label="Search"
-              name="projectFilepath"
-              oninput="validateSearch();"
-              required
-            />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{form.csrf_token}}
+            {{form.projectFilepath(class_="col-sm-4 form-control")}}
             <div class="col-sm-4">
               <input
                 class="col-sm-0 btn btn-outline-success"
@@ -255,6 +246,12 @@
               />
             </div>
           </div>
+          <h4>
+            <center style="color: red">
+              {% for error in form.projectFilepath.errors %} {{ error }} {%
+              endfor %}
+            </center>
+          </h4>
         </div>
       </form>
     </div>
@@ -783,7 +780,7 @@
     <script>
       var data = {{description|safe}};
       $(function () {
-        $("#autocomplete2").autocomplete({
+        $("#projectFilepath").autocomplete({
           source: data,
           focus: function (event, ui) {
             event.preventDefault();
@@ -793,7 +790,7 @@
           select: function (event, ui) {
             event.preventDefault();
             $(this).val(ui.item.label);
-            $("#autocomplete2-value").val(ui.item.label);
+            $("#projectFilepath-value").val(ui.item.label);
           },
         });
       });
@@ -810,19 +807,6 @@
           infinite: true,
         });
       });
-    </script>
-    <script>
-      var val_data = {{validation|safe}};
-      var search_bar_text = document.getElementById('autocomplete2');
-      function validateSearch(){
-        var search_value = document.forms["search_form"]["projectFilepath"].value;
-        var input_ = document.querySelector("#autocomplete2")
-        if($.inArray(search_value, val_data) != -1){
-          input_.setCustomValidity("");
-        }else{
-          input_.setCustomValidity("Please select an option from the suggested list.");
-        }
-      }
     </script>
   </body>
 </html>
