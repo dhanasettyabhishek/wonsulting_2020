@@ -18,6 +18,7 @@ import plotly.graph_objs as go
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "wonsulting2020"
 
+
 with open('description.json') as f:
     description = json.load(f)
 validation = set(map(lambda x: x['label'], description))
@@ -190,9 +191,16 @@ key_value = {'apples_.x': 'apples', 'banana_.x': 'bananas',
 def result():
     # food_id_description = None
     form = SearchForm()
+    with open('description.json') as f:
+        description = json.load(f)
     description_dict = dict()
     for i in description:
         description_dict[i['label']] = i['value']
+
+    data = []
+    graphJSON = None
+    graphJSON2 = None
+
     if form.validate_on_submit():
         for key, value in request.form.items():
             if key == 'projectFilepath':
@@ -204,7 +212,6 @@ def result():
         food_ids = []
         food_ids.append(food_id)
         set_food_id.add(food_id)
-        data = []
         api_value = nutrient_API(apiKey, food_id)
         X = summing_values(api_value)
         data.append(X)
