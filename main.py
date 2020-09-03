@@ -17,6 +17,7 @@ import plotly.graph_objs as go
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "wonsulting2020"
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
 with open('description.json') as f:
@@ -25,8 +26,11 @@ validation = set(map(lambda x: x['label'], description))
 
 
 class SearchForm(FlaskForm):
+    # projectFilepath = StringField('projectFilepath', render_kw={
+    #     "placeholder": "Select a food item"}, validators=[InputRequired(message="Food Name Required")])
+
     projectFilepath = StringField('projectFilepath', render_kw={
-        "placeholder": "Select a food item"}, validators=[InputRequired(message="Food Name Required")])
+        "placeholder": "Select a food item"}, validators=[])
 
     def validate_projectFilepath(self, projectFilepath):
         print(projectFilepath.data)
@@ -35,9 +39,13 @@ class SearchForm(FlaskForm):
                 "Please select an option from the suggested list.")
 
 
+set_food_id = set()
+
+
 @app.route('/')
 def home():
     form = SearchForm()
+    set_food_id.clear()
     return render_template('index.html', description=description, form=form)
 
 
@@ -175,8 +183,6 @@ def credits():
     return render_template("Credits.html")
 
 
-set_food_id = set()
-
 key_value = {'apples_.x': 'apples', 'banana_.x': 'bananas',
              "beef_.x": "beef, ground, 85% lean meat / 15% fat (includes foods for usda's food distribution program)", "blueberries_.x":
              "blueberries", "carrots_.x": "carrots", "cheddar_cheese_.x":
@@ -284,6 +290,100 @@ def result():
         graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
         return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description, form=form)
     return render_template('index.html', description=description, form=form)
+
+
+@app.route('/results', methods=['POST'])
+def results_from_images():
+    form = SearchForm()
+    with open('description.json') as f:
+        description = json.load(f)
+    description_dict = dict()
+    for i in description:
+        description_dict[i['label']] = i['value']
+
+    data = []
+
+    for key, value in request.form.items():
+        if key == 'projectFilepath':
+            food_id_description = value
+        if key in key_value:
+            food_id_description = key_value[key]
+    food_id = str(description_dict[food_id_description])
+    print(food_id)
+    food_ids = []
+    food_ids.append(food_id)
+    set_food_id.add(food_id)
+    api_value = nutrient_API(apiKey, food_id)
+    X = summing_values(api_value)
+    data.append(X)
+    if request.method == 'POST':
+        if request.form.get('search') == 'Search':
+            set_food_id.clear()
+            set_food_id.add(food_id)
+            print(set_food_id)
+            pass
+        elif request.form.get('add_to_meal') == 'Add to existing meal':
+            data = []
+            id_description = request.form.get('projectFilepath')
+            id_ = str(description_dict[id_description])
+            set_food_id.add(id_)
+            print("====", set_food_id)
+            api_value = add_multiple(list(set_food_id))
+            X = summing_values(api_value)
+            data.append(X)
+    L = api_value['Energy']
+    cal_ = []
+    value = 0
+    for k in L:
+        if k[1] == 'kJ':
+            value = convert('kcal', 'kJ', k[0])
+            cal_.append(value)
+        else:
+            value = k[0]
+            cal_.append(value)
+    target = 2000
+    temp = 0
+    for i in cal_:
+        temp = target - i
+        target = temp
+    cal_.append(temp)
+    split_ = X['foodItems'][2]
+    split_.append("Remaining value")
+    print(cal_, split_)
+    # # Plot
+    df = pd.DataFrame(X)
+    labels = ['Protein', 'Totallipidfat',
+              'Carbohydratebydifference', 'SugarstotalincludingNLEA']
+    labels2 = ['Protein', 'Fat', 'Carbs', 'Sugars']
+    colors = ['lightcyan', 'cyan', 'royalblue', 'darkblue']
+    values = []
+    for i in labels:
+        values.append(df[i][0])
+    fig = go.Figure(
+        data=[go.Bar(y=labels2, x=values, orientation='h', marker_color=colors, text=list(map(lambda orig_string: str(orig_string) + ' g', values)), textposition='auto')])
+
+    fig.update_layout(title_text='Nutrition Plot', yaxis=dict(
+        title='Nutriants',
+    ), xaxis=dict(
+        title='No.of grams',
+    ))
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Plot 2
+    # fig2 = go.Figure(data=go.Scatter(x=split_, y=cal_))
+    fig2 = go.Figure(data=go.Pie(labels=split_, values=cal_))
+    fig2.update_traces(textinfo='value')
+    fig2.update_layout(
+        title_text='Source of Calories (based on recommended 2,000 cal. )')
+    fig2.update_layout(
+        legend=dict(
+            x=0.5,
+            y=-0.25,
+            traceorder="reversed"
+        )
+    )
+    graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('hello_add_multiple.html', data=data, v=graphJSON, v2=graphJSON2, description=description, form=form)
 
 
 if __name__ == "__main__":
