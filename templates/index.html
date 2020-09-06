@@ -139,6 +139,7 @@
       </div>
     </nav>
     <br /><br />
+
     <div class="justify-content-center align-items-center">
       <h2 class="text-center">Find Nutrition Value</h2>
       <h4 class="text-center">
@@ -158,8 +159,15 @@
           <div class="row">
             <div class="col-sm-3"></div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {{form.csrf_token}} {{form.projectFilepath(class_="col-sm-4
-            form-control")}}
+            <input
+              id="autocomplete2"
+              class="col-sm-4 form-control"
+              type="text"
+              placeholder="Select a food item"
+              aria-label="Search"
+              name="projectFilepath"
+              required
+            />
             <div class="col-sm-2">
               <input
                 class="col-sm-0 btn btn-outline-success"
@@ -169,17 +177,14 @@
             </div>
           </div>
           <h4>
-            <center style="color: red">
-              {% for error in form.projectFilepath.errors %} {{ error }} {%
-              endfor %}
-            </center>
+            <center style="color: red">{{flag}}</center>
           </h4>
         </div>
       </form>
     </div>
     <br />
     <div class="wrapper">
-      <form action="{{ url_for('results_from_images') }}" method="post">
+      <form action="{{ url_for('result') }}" method="post">
         <div class="carousel">
           <div>
             <input
@@ -347,7 +352,6 @@
         </div>
       </form>
     </div>
-
     <br /><br />
     <hr />
     <div id="ourteam">
@@ -357,117 +361,102 @@
         for the Wonsulting Project 2020. <br />
       </h5>
     </div>
-    <br />
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col">
-          <div class="team-member">
-            <div class="team-img">
-              <img
-                src="../static/Abhi.jpg"
-                alt="team member Abhi"
-                class="img-responsive"
-                width="300"
-                height="300"
-              />
-            </div>
-            <div class="team-hover">
-              <div class="desk">
-                <h4>Hi There !</h4>
-                <p>
-                  "As a data enthusiast, I love to explore and analyze data. I
-                  believe that if we exploring data in the right manner,
-                  everything can be analyzed."
-                </p>
-              </div>
-              <div class="s-link">
-                <a
-                  href="https://www.linkedin.com/in/dhanasettyabhishek/
-                "
-                  target="_blank"
-                >
-                  <i class="fa fa-linkedin" aria-hidden="true">LinkedIn</i></a
-                >
-              </div>
-            </div>
+    <div class="row justify-content-center">
+      <div class="col offset-sm-1">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Abhi.jpg"
+              alt="team member Abhi"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
           </div>
-          <div class="team-title">
-            <h6>Abhishek Dhanasetty</h6>
-            <span>Data Scientist</span>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "As a data enthusiast, I love to explore and analyze data. I
+                believe that if we exploring data in the right manner,
+                everything can be analyzed."
+              </p>
+            </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="team-member">
-            <div class="team-img">
-              <img
-                src="../static/Div.jpeg"
-                alt="team member Div"
-                class="img-responsive"
-                width="300"
-                height="300"
-              />
-            </div>
-            <div class="team-hover">
-              <div class="desk">
-                <h4>Hi There !</h4>
-                <p>
-                  "Finding patterns and building models around it is my
-                  passion."
-                </p>
-              </div>
-              <div class="s-link">
-                <a
-                  href="https://www.linkedin.com/in/divijatippareddy/
-                "
-                  target="_blank"
-                  ><i class="fa fa-linkedin" aria-hidden="true">LinkedIn</i></a
-                >
-              </div>
-            </div>
+        <div class="team-title">
+          <h6>Abhishek Dhanasetty</h6>
+          <span>Data Scientist</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Div.jpeg"
+              alt="team member Div"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
           </div>
-          <div class="team-title">
-            <h6>Divija Reddy Tippa Reddy</h6>
-            <span>Data Scientist</span>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "Finding patterns and building models around it is my passion."
+              </p>
+            </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="team-member">
-            <div class="team-img">
-              <img
-                src="../static/Jen.JPG"
-                alt="team member Jen"
-                class="img-responsive"
-                width="300"
-                height="300"
-              />
+        <div class="team-title">
+          <h6>Divija Reddy Tippa Reddy</h6>
+          <span>Data Scientist</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="team-member">
+          <div class="team-img">
+            <img
+              src="../static/Jen.JPG"
+              alt="team member Jen"
+              class="img-responsive"
+              width="300"
+              height="300"
+            />
+          </div>
+          <div class="team-hover">
+            <div class="desk">
+              <h4>Hi There !</h4>
+              <p>
+                "Project management is the heart of what I do. I plan,
+                coordinate, and execute the project steps from start to finish
+                with our team."
+              </p>
             </div>
-            <div class="team-hover">
-              <div class="desk">
-                <h4>Hi There !</h4>
-                <p>
-                  "Project management is the heart of what I do. I plan,
-                  coordinate, and execute the project steps from start to finish
-                  with our team."
-                </p>
-              </div>
-              <div class="s-link">
-                <a
-                  href="https://www.linkedin.com/in/justjenniferduong/
-                "
-                  target="_blank"
-                  ><i class="fa fa-linkedin" aria-hidden="true">LinkedIn</i></a
-                >
-              </div>
+            <div class="s-link">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
             </div>
           </div>
-          <div class="team-title">
-            <h6>Jennifer Duong</h6>
-            <span>Project Manager</span>
-          </div>
+        </div>
+        <div class="team-title">
+          <h6>Jennifer Duong</h6>
+          <span>Project Manager</span>
         </div>
       </div>
     </div>
-
     <br /><br />
     <div class="card-footer bg-dark text-muted">
       <br />
@@ -502,7 +491,7 @@
     <script>
       var data = {{description|safe}};
       $(function () {
-        $("#projectFilepath").autocomplete({
+        $("#autocomplete2").autocomplete({
           source: data,
           scroll: true,
           focus: function (event, ui) {
@@ -528,6 +517,29 @@
           autoplay: true,
           autoplaySpeed: 2000,
           infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+          ],
         });
       });
     </script>

@@ -229,8 +229,16 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-3"></div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{form.csrf_token}}
-            {{form.projectFilepath(class_="col-sm-4 form-control")}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              id="autocomplete2"
+              class="col-sm-4 form-control"
+              type="text"
+              placeholder="Select a food item"
+              aria-label="Search"
+              name="projectFilepath"
+              required
+            />
             <div class="col-sm-4">
               <input
                 class="col-sm-0 btn btn-outline-success"
@@ -246,12 +254,7 @@
               />
             </div>
           </div>
-          <h4>
-            <center style="color: red">
-              {% for error in form.projectFilepath.errors %} {{ error }} {%
-              endfor %}
-            </center>
-          </h4>
+          <h4></h4>
         </div>
       </form>
     </div>
@@ -459,6 +462,7 @@
               src="../static/Carousel/Apple.jpg"
               alt=""
               name="apples_"
+              value="apples"
             />
             <h5>Apples</h5>
           </div>
@@ -469,6 +473,7 @@
               src="../static/Carousel/Bananas.jpg"
               alt=""
               name="banana_"
+              value="bananas"
             />
             <h5>Bananas</h5>
           </div>
@@ -780,8 +785,9 @@
     <script>
       var data = {{description|safe}};
       $(function () {
-        $("#projectFilepath").autocomplete({
+        $("#autocomplete2").autocomplete({
           source: data,
+          scroll: true,
           focus: function (event, ui) {
             event.preventDefault();
             $(this).val(ui.item.label);
@@ -790,7 +796,7 @@
           select: function (event, ui) {
             event.preventDefault();
             $(this).val(ui.item.label);
-            $("#projectFilepath-value").val(ui.item.label);
+            $("#autocomplete2-value").val(ui.item.label);
           },
         });
       });
@@ -805,6 +811,29 @@
           autoplay: true,
           autoplaySpeed: 2000,
           infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+          ],
         });
       });
     </script>
