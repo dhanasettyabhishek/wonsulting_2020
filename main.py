@@ -193,8 +193,6 @@ key_value = {'apples_.x': 'apples', 'banana_.x': 'bananas',
 
 @app.route('/results', methods=['POST'])
 def result():
-    # food_id_description = None
-    # form = SearchForm()
     with open('description.json') as f:
         description = json.load(f)
     description_dict = dict()
@@ -204,10 +202,11 @@ def result():
     data = []
     graphJSON = None
     graphJSON2 = None
+    formName = None
 
     for key, value in request.form.items():
-        print(key)
-        if key == 'projectFilepath':
+        print(key, value)
+        if key == 'form1' or key == 'form2':
             food_id_description = value
         if key in key_value:
             food_id_description = key_value[key]
@@ -229,7 +228,7 @@ def result():
             pass
         elif request.form.get('add_to_meal') == 'Add to existing meal':
             data = []
-            id_description = request.form.get('projectFilepath')
+            id_description = request.form.get('form2')
             id_ = str(description_dict[id_description])
             set_food_id.add(id_)
             print("====", set_food_id)
