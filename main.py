@@ -198,11 +198,12 @@ def result():
     description_dict = dict()
     for i in description:
         description_dict[i['label']] = i['value']
-
     data = []
     graphJSON = None
     graphJSON2 = None
     formName = None
+    flag1 = False
+    global set_food_id
 
     for key, value in request.form.items():
         print(key, value)
@@ -211,6 +212,7 @@ def result():
         if key in key_value:
             food_id_description = key_value[key]
     if food_id_description not in description_dict:
+        set_food_id.clear()
         return render_template('index.html', flag='Please enter text from the suggestions.', description=description)
     food_id = str(description_dict[food_id_description])
     print(food_id)
@@ -222,9 +224,12 @@ def result():
     data.append(X)
     if request.method == 'POST':
         if request.form.get('search') == 'Search':
+            print(set_food_id)
+            print("------")
             set_food_id.clear()
             set_food_id.add(food_id)
             print(set_food_id)
+            flag1 = True
             pass
         elif request.form.get('add_to_meal') == 'Add to existing meal':
             data = []
@@ -235,6 +240,7 @@ def result():
             api_value = add_multiple(list(set_food_id))
             X = summing_values(api_value)
             data.append(X)
+    print("+++", set_food_id, flag1)
     L = api_value['Energy']
     cal_ = []
     value = 0
